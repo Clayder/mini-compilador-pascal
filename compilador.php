@@ -3,6 +3,7 @@ require 'autoload.php';
 
 use App\Lexico\AnalisLexico as Lexico;
 
+
 if (isset($_POST['codigo']))
 {
 
@@ -10,6 +11,29 @@ if (isset($_POST['codigo']))
     
     $codigo = trim($inputCodigo);
  
+    $codigo = $codigo . " EOF";
+    
+    $arrayCodigo = str_split(trim($codigo));
+    
+    $lexico = new Lexico();
+    $lexico->setCodigo($arrayCodigo);
+    $lexico->nextToken();
+    
+    echo "<pre>";
+    echo "Imprimir token";
+    echo $lexico->getToken();
+    
+    echo "</pre>";
+    
+    $i = 0;
+    //do{
+    //    $i++;
+        
+    //    $lexico->nextToken($arrayCodigo);
+    //    $lexico->imprime();
+        
+    //}while($lexico->getToken() !== "EOF");
+    
     /*
      * @var $codigoPorLinha
      * Array com o código separado por linha 
@@ -18,7 +42,7 @@ if (isset($_POST['codigo']))
             [0] => var
             [1] => a, b, cd;
      *  )
-    */
+  
     $codigoPorLinha = explode("\n", $codigo);
     $codigoPorLinha[] = "EOF";
     
@@ -48,24 +72,18 @@ if (isset($_POST['codigo']))
                     [7] => d
                     [8] => ;
         ) 
-    */
+    
     for ($i = 0; $i < count($codigoPorLinha); $i++)
     {
         $arrayTokenLinha[$i] = str_replace("<br />", "", $codigoPorLinha[$i]);
         $arrayTokenLinha[$i] = str_split(trim($codigoPorLinha[$i]));
     }
+     * 
+     */
     
-    $lexico = new Lexico();
+    /*
     
-    $i = 0;
-    do{
-        $i++;
-        
-        $lexico->nextToken($codigoPorLinha);
-        $lexico->imprime();
-        
-    }while($lexico->getToken() !== "EOF");
-    
+    */
    
 
     /*
@@ -79,6 +97,6 @@ if (isset($_POST['codigo']))
 
     include("index.php");
 }else{
-    
+    header('Location: index.php');
 }
 

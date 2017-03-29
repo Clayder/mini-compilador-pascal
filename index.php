@@ -18,7 +18,8 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body style="background-color: #222">
+    <!-- <body style="background-color: #222"> -->
+    <body>
 
         <div class="container" style="margin-top: 30px;">
             <form action="compilador.php" method="POST">

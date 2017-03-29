@@ -1,14 +1,15 @@
 <?php
 
-if (isset($codigoPorLinha))
+if (isset($codigo))
 {
     echo "<pre>";
-    print_r($codigoPorLinha);
+    //print_r($codigo);
     echo "</pre>";
 
     echo "<pre>";
-    print_r($arrayTokenLinha);
+    print_r($arrayCodigo);
     echo "</pre>";
+    
 }
 
 
