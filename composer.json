@@ -1,0 +1,22 @@
+{
+    "name": "Mini compilador para pascal",
+    "description": "O objetivo desse projeto é aprender como desenvolver um compilador para pascal, ",
+    "authors": [
+        {
+            "name": "Peter Clayder",
+            "email": "peterclayder@gmail.com"
+        },
+        {
+            "name": "Fernanda Pires",
+            "email": "f.piresrj@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    }
+}
