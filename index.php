@@ -40,7 +40,7 @@
 
                     </div>
                     <div class="col-md-7" style="height: 630px;">
-
+                            <?php include("resultado.php"); ?>
                     </div>
                 </div>
             </form>

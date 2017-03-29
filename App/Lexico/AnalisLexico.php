@@ -6,14 +6,21 @@ namespace App\Lexico;
  */
 class AnalisLexico
 {
+    
+    private $token;
+
     public function __construct()
     {
         
     }
     
-    public function init(){
-        echo "<pre>";
-        print_r(TabelaSimbolos::getSimbolos());
-        echo "</pre>";
+    function getToken()
+    {
+        return $this->token;
+    }
+
+        
+    public function nextToken($codigo){
+        
     }
 }
