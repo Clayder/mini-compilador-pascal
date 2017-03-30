@@ -10,7 +10,6 @@ class AnalisLexico
 
     private $token;
     private $arrayTokens;
-    private $finalizar;
     private $idChAtual;
     private $chAtual;
     private $tamCodigo;
@@ -41,7 +40,7 @@ class AnalisLexico
     public function nextToken()
     {
         $this->chAtual = $this->codigo[$this->idChAtual];
-        /*
+        
           echo "**************";
           echo "<br />";
           echo "Entrei nextToken chAtual: $this->chAtual";
@@ -49,8 +48,7 @@ class AnalisLexico
           echo "<br />";
           echo "**************";
           echo "<br />";
-         * 
-         */
+         
 
         $this->eliminaCaracterInvalidos();
         switch ($this->chAtual)
@@ -87,9 +85,9 @@ class AnalisLexico
 
     private function analisarLetra()
     {
-        while (Letra::ehLetra($this->chAtual) && $this->finalizar)
+        do
         {
-            /*
+            
               echo "############################";
               echo "<br />";
               echo "ch atual: " . $this->chAtual;
@@ -99,31 +97,14 @@ class AnalisLexico
               echo "id: " . $this->idChAtual;
               echo "<br />";
               echo "############################";
-             * 
-             */
-
+             
             $this->token = $this->token . $this->chAtual;
-
-            if (in_array($this->token, TabelaSimbolos::getPalavrasReservadas()))
-            {
-                //$this->arrayTokens[] = $this->token;
-                // finalizar while
-                $this->finalizar = false;
-            }
+             
             $this->proximoCaracter();
-        }
+        }while (Letra::ehLetra($this->chAtual)  && $this->token !== "EOF"  );
+        //}while (Letra::ehLetra($this->chAtual)  && !in_array($this->token, TabelaSimbolos::getPalavrasReservadas())  );
        
         $this->arrayTokens[] = $this->token;
-    }
-
-    public function setFinalizar($finalizar)
-    {
-        $this->finalizar = $finalizar;
-    }
-
-    function getFinalizar()
-    {
-        return $this->finalizar;
     }
 
     private function proximoCaracter()

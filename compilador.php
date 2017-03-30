@@ -28,24 +28,12 @@ if (isset($_POST['codigo']))
 
     do
     {
-        $lexico->setFinalizar(true);
         $lexico->setToken("");
         $lexico->nextToken();
-
-        /*
-        
-        if (!$lexico->getFinalizar())
-        {
-            echo "<br />";
-            echo "saí";
-            echo "<br />";
-        }
-        
-         * 
-         */
-        //echo "<br />";
-        //echo "Tokens: ".$lexico->getToken();
-        //echo "<br />";
+    
+        echo "<br />";
+        echo "Tokens145: ".$lexico->getToken();
+        echo "<br />";
         //$lexico->imprime();
 
     } while ($lexico->getToken() !== "EOF");
