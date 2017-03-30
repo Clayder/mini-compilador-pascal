@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Lexico;
+
 /**
  * Description of TabelaSimbolos
  *
@@ -9,8 +10,14 @@ class TabelaSimbolos
 {
 
     private static $simbolos;
+    private static $palavrasReservadas = array();
 
     public static function getSimbolos()
+    {
+        return self::$simbolos;
+    }
+    
+    static function setSimbolos()
     {
         self::$simbolos = array(
             array(
@@ -23,7 +30,7 @@ class TabelaSimbolos
                 "descricao" => "var",
                 "reservado" => true,
             ),
-             array(
+            array(
                 "id" => 3,
                 "descricao" => "abre_parenteses",
                 "reservado" => false,
@@ -38,22 +45,22 @@ class TabelaSimbolos
                 "descricao" => "virgula",
                 "reservado" => false,
             ),
-             array(
+            array(
                 "id" => 6,
                 "descricao" => "ponto_virgula",
                 "reservado" => false,
             ),
-             array(
+            array(
                 "id" => 7,
                 "descricao" => "begin",
                 "reservado" => true,
             ),
-             array(
+            array(
                 "id" => 8,
                 "descricao" => "end",
                 "reservado" => true,
             ),
-              array(
+            array(
                 "id" => 9,
                 "descricao" => "print",
                 "reservado" => true,
@@ -63,7 +70,7 @@ class TabelaSimbolos
                 "descricao" => "read",
                 "reservado" => true,
             ),
-             array(
+            array(
                 "id" => 11,
                 "descricao" => "if",
                 "reservado" => true,
@@ -73,77 +80,77 @@ class TabelaSimbolos
                 "descricao" => "then",
                 "reservado" => true,
             ),
-             array(
+            array(
                 "id" => 13,
                 "descricao" => "for",
                 "reservado" => true,
             ),
-             array(
+            array(
                 "id" => 14,
                 "descricao" => "to",
                 "reservado" => true,
             ),
-              array(
+            array(
                 "id" => 15,
                 "descricao" => "do",
                 "reservado" => true,
             ),
-              array(
+            array(
                 "id" => 16,
                 "descricao" => "else",
                 "reservado" => true,
             ),
-             array(
+            array(
                 "id" => 17,
                 "descricao" => "igual",
                 "reservado" => false,
             ),
-             array(
+            array(
                 "id" => 18,
                 "descricao" => "atribuicao",
                 "reservado" => false,
             ),
-             array(
+            array(
                 "id" => 19,
                 "descricao" => "mais",
                 "reservado" => false,
             ),
-              array(
+            array(
                 "id" => 20,
                 "descricao" => "menos",
                 "reservado" => false,
             ),
-              array(
+            array(
                 "id" => 21,
                 "descricao" => "vezes",
                 "reservado" => false,
             ),
-             array(
+            array(
                 "id" => 22,
                 "descricao" => "barra",
                 "reservado" => false,
             ),
-             array(
+            array(
                 "id" => 23,
                 "descricao" => "diferente",
                 "reservado" => false,
             ),
-             array(
+            array(
                 "id" => 24,
                 "descricao" => "maior",
                 "reservado" => false,
             ),
-             array(
+            array(
                 "id" => 25,
                 "descricao" => "menor",
                 "reservado" => false,
             ),
-             array(
+            array(
                 "id" => 26,
                 "descricao" => "maior_igual",
                 "reservado" => false,
             ),
-             array(
+            array(
                 "id" => 27,
                 "descricao" => "menor_igual",
                 "reservado" => false,
@@ -160,12 +167,29 @@ class TabelaSimbolos
             ),
             array(
                 "id" => 30,
-                "descricao" => "fim_codigo",
-                "reservado" => false,
+                "descricao" => "EOF",
+                "reservado" => true,
             ),
         );
-        
-        return self::$simbolos;
     }
+
+    static function setPalavrasReservadas()
+    {
+        foreach (self::$simbolos as $value)
+        {
+            if ($value['reservado'])
+            {
+                self::$palavrasReservadas[] = $value['descricao'];
+            }
+        }
+    }
+
+        
+    static function getPalavrasReservadas()
+    {
+        return self::$palavrasReservadas;
+    }
+
+
 
 }

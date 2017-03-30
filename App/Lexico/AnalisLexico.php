@@ -9,6 +9,8 @@ class AnalisLexico
 {
 
     private $token;
+    private $arrayTokens;
+    private $finalizar;
     private $idChAtual;
     private $chAtual;
     private $tamCodigo;
@@ -24,7 +26,12 @@ class AnalisLexico
     {
         return $this->token;
     }
-    
+
+    function setToken($token)
+    {
+        $this->token = $token;
+    }
+
     function setCodigo($codigo)
     {
         $this->codigo = $codigo;
@@ -34,13 +41,24 @@ class AnalisLexico
     public function nextToken()
     {
         $this->chAtual = $this->codigo[$this->idChAtual];
+        /*
+          echo "**************";
+          echo "<br />";
+          echo "Entrei nextToken chAtual: $this->chAtual";
+          echo "Entrei idchAtual: $this->idChAtual";
+          echo "<br />";
+          echo "**************";
+          echo "<br />";
+         * 
+         */
+
         $this->eliminaCaracterInvalidos();
         switch ($this->chAtual)
         {
             case (Letra::ehLetra($this->chAtual)):
-                
-                $this->analisarLetras();
-                
+
+                $this->analisarLetra();
+
                 break;
 
             default:
@@ -50,23 +68,64 @@ class AnalisLexico
 
     private function eliminaCaracterInvalidos()
     {
-        // se for inválido, vai para o próximo
-        if ($this->chAtual == " ")
+        while ($this->chAtual == " " || $this->chAtual == "\n" || $this->chAtual == "\r")
         {
-            $this->nextCaracter();
-        }
-        return $this->chAtual;
-    }
-
-    private function analisarLetras()
-    {
-        while (Letra::ehLetra($this->chAtual))
-        {
-            $this->token = $this->token . $this->chAtual;
+            /*
+            echo "**************";
+            echo "<br />";
+            echo "Entrei eliminarCaracter chAtual: $this->chAtual";
+            echo "<br />";
+            echo "Entrei idchAtual: $this->idChAtual";
+            echo "<br />";
+            echo "**************";
+            echo "<br />";
+             * 
+             */
             $this->proximoCaracter();
         }
     }
-   
+
+    private function analisarLetra()
+    {
+        while (Letra::ehLetra($this->chAtual) && $this->finalizar)
+        {
+            /*
+              echo "############################";
+              echo "<br />";
+              echo "ch atual: " . $this->chAtual;
+              echo "<br />";
+              echo "token: " . $this->token;
+              echo "<br />";
+              echo "id: " . $this->idChAtual;
+              echo "<br />";
+              echo "############################";
+             * 
+             */
+
+            $this->token = $this->token . $this->chAtual;
+
+            if (in_array($this->token, TabelaSimbolos::getPalavrasReservadas()))
+            {
+                //$this->arrayTokens[] = $this->token;
+                // finalizar while
+                $this->finalizar = false;
+            }
+            $this->proximoCaracter();
+        }
+       
+        $this->arrayTokens[] = $this->token;
+    }
+
+    public function setFinalizar($finalizar)
+    {
+        $this->finalizar = $finalizar;
+    }
+
+    function getFinalizar()
+    {
+        return $this->finalizar;
+    }
+
     private function proximoCaracter()
     {
         // verifico se existe o próximo caracter
@@ -75,12 +134,31 @@ class AnalisLexico
             $this->idChAtual = $this->idChAtual + 1;
             $this->chAtual = $this->codigo[$this->idChAtual];
         }
-       
     }
 
     public function imprime()
     {
-        
+        $qtdTokens = count($this->arrayTokens);
+        for ($i = 0; $i < $qtdTokens; $i++)
+        {
+            if ($this->arrayTokens[$i] != " ")
+            {
+                echo $this->arrayTokens[$i];
+                echo "<br />";
+            }
+        }
     }
+
+    function getIdChAtual()
+    {
+        return $this->idChAtual;
+    }
+    
+    function getArrayTokens()
+    {
+        return $this->arrayTokens;
+    }
+
+
 
 }
