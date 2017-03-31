@@ -9,163 +9,179 @@ namespace App\Lexico;
 class TabelaSimbolos
 {
 
+    /**
+     *
+     * @var array
+     */
     private static $simbolos;
+
+    /**
+     *
+     * @var array
+     */
     private static $palavrasReservadas = array();
 
+    /**
+     * 
+     * @return array
+     */
     public static function getSimbolos()
     {
         return self::$simbolos;
     }
-    
+
+    /**
+     * @return void
+     */
     static function setSimbolos()
     {
         self::$simbolos = array(
-            array(
+            'ponto' => array(
                 "id" => 1,
                 "descricao" => "ponto",
                 "reservado" => false,
             ),
-            array(
+            'var' => array(
                 "id" => 2,
                 "descricao" => "var",
                 "reservado" => true,
             ),
-            array(
+            'abre_parenteses' => array(
                 "id" => 3,
                 "descricao" => "abre_parenteses",
                 "reservado" => false,
             ),
-            array(
+            'fecha_parenteses' => array(
                 "id" => 4,
                 "descricao" => "fecha_parenteses",
                 "reservado" => false,
             ),
-            array(
+            'virgula' => array(
                 "id" => 5,
                 "descricao" => "virgula",
                 "reservado" => false,
             ),
-            array(
+            'ponto_virgula' => array(
                 "id" => 6,
                 "descricao" => "ponto_virgula",
                 "reservado" => false,
             ),
-            array(
+            'begin' => array(
                 "id" => 7,
                 "descricao" => "begin",
                 "reservado" => true,
             ),
-            array(
+            'end' => array(
                 "id" => 8,
                 "descricao" => "end",
                 "reservado" => true,
             ),
-            array(
+            'print' => array(
                 "id" => 9,
                 "descricao" => "print",
                 "reservado" => true,
             ),
-            array(
+            'read' => array(
                 "id" => 10,
                 "descricao" => "read",
                 "reservado" => true,
             ),
-            array(
+            'if' => array(
                 "id" => 11,
                 "descricao" => "if",
                 "reservado" => true,
             ),
-            array(
+            'then' => array(
                 "id" => 12,
                 "descricao" => "then",
                 "reservado" => true,
             ),
-            array(
+            'for' => array(
                 "id" => 13,
                 "descricao" => "for",
                 "reservado" => true,
             ),
-            array(
+            'to' => array(
                 "id" => 14,
                 "descricao" => "to",
                 "reservado" => true,
             ),
-            array(
+            'do' => array(
                 "id" => 15,
                 "descricao" => "do",
                 "reservado" => true,
             ),
-            array(
+            'else' => array(
                 "id" => 16,
                 "descricao" => "else",
                 "reservado" => true,
             ),
-            array(
+            'igual' => array(
                 "id" => 17,
                 "descricao" => "igual",
                 "reservado" => false,
             ),
-            array(
+            'atribuicao' => array(
                 "id" => 18,
                 "descricao" => "atribuicao",
                 "reservado" => false,
             ),
-            array(
+            'mais' => array(
                 "id" => 19,
                 "descricao" => "mais",
                 "reservado" => false,
             ),
-            array(
+            'menos' => array(
                 "id" => 20,
                 "descricao" => "menos",
                 "reservado" => false,
             ),
-            array(
+            'vezes' => array(
                 "id" => 21,
                 "descricao" => "vezes",
                 "reservado" => false,
             ),
-            array(
+            'barra' => array(
                 "id" => 22,
                 "descricao" => "barra",
                 "reservado" => false,
             ),
-            array(
+            'diferente' => array(
                 "id" => 23,
                 "descricao" => "diferente",
                 "reservado" => false,
             ),
-            array(
+            'maior' => array(
                 "id" => 24,
                 "descricao" => "maior",
                 "reservado" => false,
             ),
-            array(
+            'menor' => array(
                 "id" => 25,
                 "descricao" => "menor",
                 "reservado" => false,
             ),
-            array(
+            'maior_igual' => array(
                 "id" => 26,
                 "descricao" => "maior_igual",
                 "reservado" => false,
             ),
-            array(
+            'menor_igual' => array(
                 "id" => 27,
                 "descricao" => "menor_igual",
                 "reservado" => false,
             ),
-            array(
+            'variavel' => array(
                 "id" => 28,
                 "descricao" => "variavel",
                 "reservado" => false,
             ),
-            array(
+            'numero' => array(
                 "id" => 29,
                 "descricao" => "numero",
                 "reservado" => false,
             ),
-            array(
+            'EOF' => array(
                 "id" => 30,
                 "descricao" => "EOF",
                 "reservado" => true,
@@ -173,7 +189,10 @@ class TabelaSimbolos
         );
     }
 
-    static function setPalavrasReservadas()
+    /**
+     * @return void
+     */
+    public static function setPalavrasReservadas()
     {
         foreach (self::$simbolos as $value)
         {
@@ -184,12 +203,13 @@ class TabelaSimbolos
         }
     }
 
-        
-    static function getPalavrasReservadas()
+    /**
+     * 
+     * @return array
+     */
+    public static function getPalavrasReservadas()
     {
         return self::$palavrasReservadas;
     }
-
-
 
 }

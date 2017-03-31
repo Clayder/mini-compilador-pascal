@@ -6,13 +6,14 @@ use App\Codigo\Codigo;
 
 /**
  * Description of Letra
- *
+ * @author Peter Clayder e Fernanda Pires
  */
-class Letra
+class Letra implements IToken
 {
+
     /**
      *
-     * @var Codigo $codigo
+     * @var Codigo 
      */
     private $codigo;
 
@@ -43,18 +44,20 @@ class Letra
 
     /**
      * Analisa a letra atual e percorre os próximos carácteres do código, 
-     * enquanto for letra. O token é formado, concatenando os 
-     * caracteres encontrados.
+     * enquanto for letra. 
+     * O token é formado, concatenando os caracteres encontrados.
      * @param string $token
      * @param type $chAtual
      * @param int $idChAtual
      * @return array
      */
-    public function analisarLetra($token, $chAtual, $idChAtual)
+    public function gerarToken($token, $chAtual, $idChAtual)
     {
         do
         {
             echo "############################";
+            echo "<br />";
+            echo "Gerar token Letra";
             echo "<br />";
             echo "ch atual: " . $chAtual;
             echo "<br />";
@@ -69,15 +72,36 @@ class Letra
 
             // próximo caracter 
             $dadosProxCaracter = $this->codigo->proximoCaracter($idChAtual, $chAtual);
-            
+
             // atualiza os dados do caracter atual 
             $chAtual = $dadosProxCaracter['chAtual'];
             $idChAtual = $dadosProxCaracter['idChAtual'];
-            
         } while (self::ehLetra($chAtual) && $token !== "EOF");
-        //}while (Letra::ehLetra($this->chAtual)  && !in_array($this->token, TabelaSimbolos::getPalavrasReservadas())  );
-        
-       return array('token' => $token, 'chAtual' => $chAtual, 'idChatual' => $idChAtual);
+
+        $relatorio = $this->gerarRelatorio($token);
+
+        return array('token' => $token, 'chAtual' => $chAtual, 'idChatual' => $idChAtual, 'relatorio' => $relatorio);
+    }
+
+    public function gerarRelatorio($token)
+    {
+        $palavrasReservadas = TabelaSimbolos::getPalavrasReservadas();
+        if (!in_array($token, $palavrasReservadas))
+        {
+            $chave = "variavel";
+        } else
+        {
+            $chave = $token;
+        }
+
+        $tabelaToken = array(
+            "id" => TabelaSimbolos::getSimbolos()[$chave]['id'],
+            "descricao" => TabelaSimbolos::getSimbolos()[$chave]['descricao'],
+            "lexema" => $token,
+            "reservado" => TabelaSimbolos::getSimbolos()[$chave]['reservado'],
+        );
+
+        return $tabelaToken;
     }
 
 }

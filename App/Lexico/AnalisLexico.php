@@ -1,37 +1,40 @@
 <?php
 
 namespace App\Lexico;
+
 use App\Codigo\Codigo;
 
 /**
  * Description of AnalisLexico
-*/
+ * @author Peter Clayder e Fernanda Pires
+ */
 class AnalisLexico
 {
+
     /**
      * Recebe o token formado 
-     * @var 
-    */
+     * @var type
+     */
     private $token;
-    
+
     /**
      * Lista de tokens 
      * @var array
      */
     private $arrayTokens;
-    
+
     /**
      * Recebe o id do caracter atual, que está sendo analisado
      * @var int 
-    */
+     */
     private $idChAtual;
-    
+
     /**
      * Recebe o caracter atual, que está sendo analisado
-     * @var  
-    */
+     * @var type
+     */
     private $chAtual;
-    
+
     /**
      * Recebe um objeto do tipo codigo
      * @var Codigo
@@ -39,11 +42,12 @@ class AnalisLexico
     private $codigo;
     
     /**
-     * Recebe um objeto do tipo letra
-     * @var Letra
+     * Possui um array com um relatório dos tokens gerados. 
+     * Dados: id, descricao, lexema e se o token é palavra reservada ou não 
+     * @var array
      */
-    private $letra;
-    
+    private $relatorioTokens;
+
     /**
      * 
      * @param Codigo $codigo
@@ -68,7 +72,7 @@ class AnalisLexico
      * 
      * @param type $token
      */
-    function setToken($token)
+    public function setToken($token)
     {
         $this->token = $token;
     }
@@ -80,43 +84,37 @@ class AnalisLexico
      * feita no "do while" do método analisarLetras da classe Letra) com issp método 
      * (nextToken) é finalizado. Depois de finalizar o método o programa volta para 
      * a main (compilador.php), dando continuidade na execução do “do while”. 
-    */
+     * @return void
+     */
     public function nextToken()
     {
         // Recebe o valor do caracter atual 
         $this->chAtual = $this->codigo->getCaracterCodigo($this->idChAtual);
-        
-          echo "**************";
-          echo "<br />";
-          echo "Entrei nextToken chAtual: $this->chAtual";
-          echo "Entrei idchAtual: $this->idChAtual";
-          echo "<br />";
-          echo "**************";
-          echo "<br />";
-         
+
+        echo "**************";
+        echo "<br />";
+        echo "Entrei nextToken chAtual: $this->chAtual";
+        echo "Entrei idchAtual: $this->idChAtual";
+        echo "<br />";
+        echo "**************";
+        echo "<br />";
+
         $dadosEliminarCaracter = $this->codigo->eliminaCaracterInvalidos($this->idChAtual, $this->chAtual);
-        
+
         $this->setDadosChAtual($dadosEliminarCaracter['idChAtual'], $dadosEliminarCaracter['chAtual']);
-        
+
         switch ($this->chAtual)
         {
             case (Letra::ehLetra($this->chAtual)):
+                
+                $this->geracaoToken(new Letra($this->codigo));
+                
+                break;
 
-                $letra = new Letra($this->codigo);
-                
-                /*
-                 * Cria o token do tipo letra 
-                */
-                $analiseLetra = $letra->analisarLetra($this->token, $this->chAtual, $this->idChAtual);
-                
-                /*
-                 * Atualiza os dados do chAtual
-                 */
-                $this->setDadosChAtual($analiseLetra['idChatual'], $analiseLetra['chAtual']);
-                
-                $this->token = $analiseLetra['token'];
-                $this->arrayTokens[] = $this->token;
-                        
+            case (is_numeric($this->chAtual)):
+
+                $this->geracaoToken(new Algarismo($this->codigo));
+
                 break;
 
             default:
@@ -124,8 +122,25 @@ class AnalisLexico
         }
     }
 
+    public function geracaoToken(IToken $gerar)
+    {
+        /*
+         * Cria o token 
+         */
+        $tokenGerado = $gerar->gerarToken($this->token, $this->chAtual, $this->idChAtual);
+        
+        /*
+         * Atualiza os dados do chAtual
+         */
+        $this->setDadosChAtual($tokenGerado['idChatual'], $tokenGerado['chAtual']);
+
+        $this->token = $tokenGerado['token'];
+        $this->arrayTokens[] = $this->token;
+        $this->relatorioTokens[] = $tokenGerado['relatorio'];
+    }
+
     /**
-     * 
+     * @return void
      */
     public function imprime()
     {
@@ -144,31 +159,40 @@ class AnalisLexico
      * 
      * @return int
      */
-    function getIdChAtual()
+    public function getIdChAtual()
     {
         return $this->idChAtual;
+    }
+
+    /**
+     * 
+     * @return array
+     */
+    public function getArrayTokens()
+    {
+        return $this->arrayTokens;
+    }
+
+    /**
+     * Atualiza os dados do idChAtual e chAtual
+     * @param int $idChAtual
+     * @param type $chAtual
+     * @return void
+     */
+    public function setDadosChAtual($idChAtual, $chAtual)
+    {
+        $this->idChAtual = $idChAtual;
+        $this->chAtual = $chAtual;
     }
     
     /**
      * 
      * @return array
      */
-    function getArrayTokens()
+    public function getRelatorioTokens()
     {
-        return $this->arrayTokens;
+        return $this->relatorioTokens;
     }
-    
-    /**
-     * Atualiza os dados do idChAtual e chAtual
-     * @param int $idChAtual
-     * @param type $chAtual
-     */
-    public function setDadosChAtual($idChAtual, $chAtual){
-        $this->idChAtual = $idChAtual;
-        $this->chAtual = $chAtual;
-    }
-
-
 
 
 
