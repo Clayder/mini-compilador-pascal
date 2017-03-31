@@ -8,12 +8,14 @@
 
 namespace App\Lexico;
 
+use App\Codigo\Codigo;
+
 /**
- * Description of SinalComposto
+ * Description of SinalMenor
  *
- * @author clayder
+ * @author Peter Clayder e Fernanda Pires
  */
-class SinalComposto
+class SinalMenor
 {
     //put your code here
 }

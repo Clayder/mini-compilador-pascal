@@ -8,6 +8,8 @@
 
 namespace App\Lexico;
 
+use App\Codigo\Codigo;
+
 /**
  * Description of Algarismo
  *
@@ -34,7 +36,7 @@ class Algarismo implements IToken
      */
     private $tabelaToken;
 
-    public function __construct($codigo)
+    public function __construct(Codigo $codigo)
     {
         $this->codigo = $codigo;
     }

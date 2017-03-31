@@ -103,22 +103,37 @@ class AnalisLexico
 
         $this->setDadosChAtual($dadosEliminarCaracter['idChAtual'], $dadosEliminarCaracter['chAtual']);
 
+        $objGerarToken = null;
+        
         switch ($this->chAtual)
         {
             case (Letra::ehLetra($this->chAtual)):
                 
-                $this->geracaoToken(new Letra($this->codigo));
+                $objGerarToken = new Letra($this->codigo);
                 
                 break;
 
             case (is_numeric($this->chAtual)):
 
-                $this->geracaoToken(new Algarismo($this->codigo));
+                $objGerarToken = new Algarismo($this->codigo);
 
+                break;
+            
+            case (Sinal::ehSinal($this->chAtual)):
+                
+                $objGerarToken = new Sinal($this->codigo);
+                
+                
                 break;
 
             default:
                 break;
+        }
+        
+        if($objGerarToken != null){
+            $this->geracaoToken($objGerarToken);
+        }else{
+            echo "token invalido";
         }
     }
 
