@@ -86,6 +86,7 @@ class Letra implements IToken
     public function gerarRelatorio($token)
     {
         $palavrasReservadas = TabelaSimbolos::getPalavrasReservadas();
+        
         if (!in_array($token, $palavrasReservadas))
         {
             $chave = "variavel";
@@ -93,15 +94,8 @@ class Letra implements IToken
         {
             $chave = $token;
         }
-
-        $tabelaToken = array(
-            "id" => TabelaSimbolos::getSimbolos()[$chave]['id'],
-            "descricao" => TabelaSimbolos::getSimbolos()[$chave]['descricao'],
-            "lexema" => $token,
-            "reservado" => TabelaSimbolos::getSimbolos()[$chave]['reservado'],
-        );
-
-        return $tabelaToken;
+        
+        return Relatorio::get($token, $chave);
     }
 
 }

@@ -35,6 +35,7 @@ class Algarismo implements IToken
      * @var array
      */
     private $tabelaToken;
+    
 
     public function __construct(Codigo $codigo)
     {
@@ -43,8 +44,6 @@ class Algarismo implements IToken
 
     public function gerarToken($token, $chAtual, $idChAtual)
     {
-        
-        
         
         do
         {
@@ -78,15 +77,9 @@ class Algarismo implements IToken
     }
 
     public function gerarRelatorio($token)
-    {
-        $tabelaToken = array(
-            "id" => TabelaSimbolos::getSimbolos()['numero']['id'],
-            "descricao" => TabelaSimbolos::getSimbolos()['numero']['descricao'],
-            "lexema" => $token,
-            "reservado" => TabelaSimbolos::getSimbolos()['numero']['reservado'],
-        );
-        
-        return $tabelaToken;
+    { 
+        return Relatorio::get($token, "numero");
     }
+
 
 }

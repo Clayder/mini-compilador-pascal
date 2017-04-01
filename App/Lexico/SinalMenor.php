@@ -1,17 +1,16 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace App\Lexico;
 
 use App\Codigo\Codigo;
 
 /**
- * Description of SinalMenor
+ * Classe utilizada para verificação e criação de token da categoria sinal menor.
+ * Lista de possíveis tokens:
+ * 
+ * 1) <
+ * 2) <=
+ * 3) <>
  *
  * @author Peter Clayder e Fernanda Pires
  */
@@ -19,35 +18,41 @@ class SinalMenor implements IToken
 {
     
     /**
-     *
-     * @var type 
+     * Recebe a chave que o token pertence. 
+     * Essa chave é referente ao array $simbolos da classe TabelaSimbolos 
+     * @var string 
      */
     private $tipoToken;
     
+    /**
+     *
+     * @var Codigo
+     */
     private $codigo;
     
+    /**
+     * 
+     * @param Codigo $codigo
+     * @return void
+     */
     public function __construct($codigo)
     {
         $this->codigo = $codigo;
     }
 
-        //put your code here
+     /**
+     * Implementação da interface IToken 
+     * @param type $token
+     * @return array Description
+     */
     public function gerarRelatorio($token)
     {
-        $palavrasReservadas = TabelaSimbolos::getPalavrasReservadas();
-
-        $tabelaToken = array(
-            "id" => TabelaSimbolos::getSimbolos()[$this->tipoToken]['id'],
-            "descricao" => TabelaSimbolos::getSimbolos()[$this->tipoToken]['descricao'],
-            "lexema" => $token,
-            "reservado" => TabelaSimbolos::getSimbolos()[$this->tipoToken]['reservado'],
-        );
-
-        return $tabelaToken;
+        return Relatorio::get($token, $this->tipoToken);
     }
 
     /**
-     * Analisa o sinal atual, todos os sinais possuem apenas 1 caracter
+     * Analisa o sinal < e verifica se o próximo carácter é um dos sinais :
+     * = ou >
      * 
      * @param string $token
      * @param type $chAtual
@@ -57,23 +62,12 @@ class SinalMenor implements IToken
     public function gerarToken($token, $chAtual, $idChAtual)
     {
 
-        echo "############################";
-        echo "<br />";
-        echo "Gerar token Menor";
-        echo "<br />";
-        echo "ch atual: " . $chAtual;
-        echo "<br />";
-        echo "token: " . $token;
-        echo "<br />";
-        echo "id: " . $idChAtual;
-        echo "<br />";
-        echo "############################";
-
-
+        Teste\Teste::gerarToken("menor", $chAtual, $token, $idChAtual);
+       
         // próximo caracter 
         $dadosProxCaracter = $this->codigo->proximoCaracter($idChAtual, $chAtual);
 
-        // atualiza os dados do caracter atual 
+        // recebe os dados do próximo caracter
         $chProximo = $dadosProxCaracter['chAtual'];
         $idChProximo = $dadosProxCaracter['idChAtual'];
         
@@ -97,5 +91,6 @@ class SinalMenor implements IToken
 
         return array('token' => $token, 'chAtual' => $dadosProxCaracter['chAtual'], 'idChatual' => $dadosProxCaracter['idChAtual'], 'relatorio' => $relatorio);
     }
+
 
 }

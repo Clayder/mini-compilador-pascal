@@ -23,6 +23,7 @@ class Sinal implements IToken
      * @var Codigo
      */
     private $codigo;
+    
 
     /**
      * 
@@ -36,18 +37,9 @@ class Sinal implements IToken
     //put your code here
     public function gerarRelatorio($token)
     {
-        $palavrasReservadas = TabelaSimbolos::getPalavrasReservadas();
-
         $dadosSinal = $this->getSinal($token);
-        
-        $tabelaToken = array(
-            "id" => TabelaSimbolos::getSimbolos()[$dadosSinal[0]]['id'],
-            "descricao" => TabelaSimbolos::getSimbolos()[$dadosSinal[0]]['descricao'],
-            "lexema" => $token,
-            "reservado" => TabelaSimbolos::getSimbolos()[$dadosSinal[0]]['reservado'],
-        );
-
-        return $tabelaToken;
+      
+        return Relatorio::get($token, $dadosSinal[0]);
     }
 
     /**

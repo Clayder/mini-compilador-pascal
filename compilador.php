@@ -68,7 +68,7 @@ if (isset($_POST['codigo']))
         echo "<br />";
         //$lexico->imprime();
 
-    } while ($lexico->getToken() !== "EOF");
+    } while ($lexico->getToken() !== "EOF" && !$lexico->getExisteCaracterInvalido());
 
 }
 include("index.php");

@@ -40,13 +40,19 @@ class AnalisLexico
      * @var Codigo
      */
     private $codigo;
-    
+
     /**
      * Possui um array com um relatório dos tokens gerados. 
      * Dados: id, descricao, lexema e se o token é palavra reservada ou não 
      * @var array
      */
     private $relatorioTokens;
+
+    /**
+     * Recebe true se o caracter for inválido e finaliza o laço de repetição lá da main
+     * @var boolean
+     */
+    private $existeCaracterInvalido = false;
 
     /**
      * 
@@ -90,27 +96,19 @@ class AnalisLexico
     {
         // Recebe o valor do caracter atual 
         $this->chAtual = $this->codigo->getCaracterCodigo($this->idChAtual);
-
-        echo "**************";
-        echo "<br />";
-        echo "Entrei nextToken chAtual: $this->chAtual";
-        echo "Entrei idchAtual: $this->idChAtual";
-        echo "<br />";
-        echo "**************";
-        echo "<br />";
-
+        
         $dadosEliminarCaracter = $this->codigo->eliminaCaracterInvalidos($this->idChAtual, $this->chAtual);
 
         $this->setDadosChAtual($dadosEliminarCaracter['idChAtual'], $dadosEliminarCaracter['chAtual']);
 
         $objGerarToken = null;
-        
+
         switch ($this->chAtual)
         {
             case (Letra::ehLetra($this->chAtual)):
-                
+
                 $objGerarToken = new Letra($this->codigo);
-                
+
                 break;
 
             case (is_numeric($this->chAtual)):
@@ -118,50 +116,69 @@ class AnalisLexico
                 $objGerarToken = new Algarismo($this->codigo);
 
                 break;
-            
+
             case (Sinal::ehSinal($this->chAtual)):
-                
+
                 $objGerarToken = new Sinal($this->codigo);
-                
-                 break;
-             
+
+                break;
+
             case ($this->chAtual === "<"):
-                
+
                 $objGerarToken = new SinalMenor($this->codigo);
-               
+
+                break;
+
+            case ($this->chAtual === ">"):
+
+                $objGerarToken = new SinalMaior($this->codigo);
+
+                break;
+
+            case ($this->chAtual === ":"):
+
+                $objGerarToken = new SinalPontoIgual($this->codigo);
+
                 break;
 
             default:
+                $this->existeCaracterInvalido = true;
                 break;
         }
-        
-        if($objGerarToken != null){
+
+
+        if ($objGerarToken != null && !$this->existeCaracterInvalido)
+        {
             $this->geracaoToken($objGerarToken);
-        }else{
+        } else
+        {
             echo "token invalido";
         }
     }
 
     public function geracaoToken(IToken $gerar)
     {
-        
-        $i = 0;
-        
-        echo "Geração Token " . $i++ . "<br />";
-        
+
         /*
          * Cria o token 
          */
         $tokenGerado = $gerar->gerarToken($this->token, $this->chAtual, $this->idChAtual);
-        
-        /*
-         * Atualiza os dados do chAtual
-         */
-        $this->setDadosChAtual($tokenGerado['idChatual'], $tokenGerado['chAtual']);
 
-        $this->token = $tokenGerado['token'];
-        $this->arrayTokens[] = $this->token;
-        $this->relatorioTokens[] = $tokenGerado['relatorio'];
+        /* Se o token for valido */
+        if (count($tokenGerado) > 0)
+        {
+            /*
+             * Atualiza os dados do chAtual
+             */
+            $this->setDadosChAtual($tokenGerado['idChatual'], $tokenGerado['chAtual']);
+
+            $this->token = $tokenGerado['token'];
+            $this->arrayTokens[] = $this->token;
+            $this->relatorioTokens[] = $tokenGerado['relatorio'];
+        } else
+        {
+            $this->existeCaracterInvalido = true;
+        }
     }
 
     /**
@@ -209,7 +226,7 @@ class AnalisLexico
         $this->idChAtual = $idChAtual;
         $this->chAtual = $chAtual;
     }
-    
+
     /**
      * 
      * @return array
@@ -219,6 +236,9 @@ class AnalisLexico
         return $this->relatorioTokens;
     }
 
-
+    public function getExisteCaracterInvalido()
+    {
+        return $this->existeCaracterInvalido;
+    }
 
 }
