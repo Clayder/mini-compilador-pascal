@@ -123,7 +123,12 @@ class AnalisLexico
                 
                 $objGerarToken = new Sinal($this->codigo);
                 
+                 break;
+             
+            case ($this->chAtual === "<"):
                 
+                $objGerarToken = new SinalMenor($this->codigo);
+               
                 break;
 
             default:
@@ -139,6 +144,11 @@ class AnalisLexico
 
     public function geracaoToken(IToken $gerar)
     {
+        
+        $i = 0;
+        
+        echo "Geração Token " . $i++ . "<br />";
+        
         /*
          * Cria o token 
          */
