@@ -1,41 +1,47 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace App\Lexico;
 
 use App\Codigo\Codigo;
 
 /**
- * Description of SinalMenor
- *
+ * Classe utilizada para verificação e criação de token da categoria ponto_igual := .
+ * Token: := 
+ * Observação: A linguagem não permite que exista o carácter : sem a presença do carácter = 
+ * 
  * @author Peter Clayder e Fernanda Pires
  */
 class SinalPontoIgual implements IToken
 {
 
     /**
-     *
-     * @var type 
+     * Recebe a chave que o token pertence. 
+     * Essa chave é referente ao array $simbolos da classe TabelaSimbolos 
+     * @var string 
      */
     private $tipoToken;
-    
+
     /**
      *
      * @var Codigo
-    */
+     */
     private $codigo;
-    
+
+    /**
+     * 
+     * @param type $codigo
+     */
     public function __construct($codigo)
     {
         $this->codigo = $codigo;
+        $this->tipoToken = "atribuicao";
     }
 
-    //put your code here
+    /**
+     * Implementação da interface IToken 
+     * @param type $token
+     * @return array Description
+    */
     public function gerarRelatorio($token)
     {
         return Relatorio::get($token, $this->tipoToken);
@@ -47,23 +53,12 @@ class SinalPontoIgual implements IToken
      * @param string $token
      * @param type $chAtual
      * @param int $idChAtual
-     * @return array
+     * @return array Retorna um array com o seguinte formato array('token' => $token, 'chAtual' => $chAtual, 'idChatual' => $idChAtual, 'relatorio' => $relatorio) se o token for valido, caso contrário retorna um array vazio.
      */
     public function gerarToken($token, $chAtual, $idChAtual)
     {
 
-        echo "############################";
-        echo "<br />";
-        echo "Gerar token Atribuição";
-        echo "<br />";
-        echo "ch atual: " . $chAtual;
-        echo "<br />";
-        echo "token: " . $token;
-        echo "<br />";
-        echo "id: " . $idChAtual;
-        echo "<br />";
-        echo "############################";
-
+        //Teste\Teste::gerarToken("Atribuição", $chAtual, $token, $idChAtual);
 
         // próximo caracter 
         $dadosProxCaracter = $this->codigo->proximoCaracter($idChAtual, $chAtual);
@@ -72,17 +67,18 @@ class SinalPontoIgual implements IToken
         $chProximo = $dadosProxCaracter['chAtual'];
         $idChProximo = $dadosProxCaracter['idChAtual'];
 
+        /*
+         * Verifica se o próximo carácter é o =
+         * Se for verdadeiro o token := será formado 
+         * Caso contrário será retornado carácter inválido
+         * pois a linguagem não permite o uso de : 
+         */
         if ($dadosProxCaracter['chAtual'] === "=")
         {
-            
-            echo "<br />";
-            echo " eRRRRRRRRRRRRRRRRRRROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO : " . $dadosProxCaracter['chAtual'];
-            echo "<br />";
-            
+
             $token = $chAtual . "=";
             $dadosProxCaracter = $this->codigo->proximoCaracter($idChProximo, $chProximo);
-            $this->tipoToken = "atribuicao";
-
+            
             $relatorio = $this->gerarRelatorio($token);
 
             return array('token' => $token, 'chAtual' => $dadosProxCaracter['chAtual'], 'idChatual' => $dadosProxCaracter['idChAtual'], 'relatorio' => $relatorio);
@@ -91,6 +87,5 @@ class SinalPontoIgual implements IToken
             return array();
         }
     }
-
 
 }

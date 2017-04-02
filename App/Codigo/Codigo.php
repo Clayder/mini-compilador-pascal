@@ -95,14 +95,7 @@ class Codigo
         while ($chAtual == " " || $chAtual == "\n" || $chAtual == "\r")
         {
             
-            echo "**************";
-            echo "<br />";
-            echo "Entrei eliminarCaracter chAtual: $chAtual";
-            echo "<br />";
-            echo "Entrei idchAtual: $idChAtual";
-            echo "<br />";
-            echo "**************";
-            echo "<br />";
+            //Teste\Teste::gerarToken("Entrei eliminarCaracter", $chAtual, "", $idChAtual);
              
              
             $dadosProximo = $this->proximoCaracter($idChAtual, $chAtual);

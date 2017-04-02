@@ -5,15 +5,27 @@ namespace App\Lexico;
 use App\Codigo\Codigo;
 
 /**
- * Description of Sinal
+ * Classe utilizada para verificação e criação de token da categoria sinal.
+ * Lista de possíveis tokens:
  *
+ * 1) +
+ * 2) -
+ * 3) *
+ * 4) /
+ * 5) (
+ * 6) )
+ * 7) =
+ * 8) .
+ * 9) ;
+ * 10) ,
+ * 
  * @author Peter Clayder e Fernanda Pires
  */
 class Sinal implements IToken
 {
 
     /**
-     * Armazena os sinais que a linguagem possui 
+     * Armazena os tokens ( sinais ) que a linguagem possui 
      * @var array
      */
     private static $arraySinais;
@@ -23,7 +35,6 @@ class Sinal implements IToken
      * @var Codigo
      */
     private $codigo;
-    
 
     /**
      * 
@@ -34,11 +45,15 @@ class Sinal implements IToken
         $this->codigo = $codigo;
     }
 
-    //put your code here
+    /**
+     * Implementação da interface IToken 
+     * @param type $token
+     * @return array Description
+     */
     public function gerarRelatorio($token)
     {
         $dadosSinal = $this->getSinal($token);
-      
+
         return Relatorio::get($token, $dadosSinal[0]);
     }
 
@@ -53,17 +68,7 @@ class Sinal implements IToken
     public function gerarToken($token, $chAtual, $idChAtual)
     {
 
-        echo "############################";
-        echo "<br />";
-        echo "Gerar token Sinal";
-        echo "<br />";
-        echo "ch atual: " . $chAtual;
-        echo "<br />";
-        echo "token: " . $token;
-        echo "<br />";
-        echo "id: " . $idChAtual;
-        echo "<br />";
-        echo "############################";
+        //Teste\Teste::gerarToken("Sinal", $chAtual, $token, $idChAtual);
 
         // forma o token
         $token = $chAtual;
@@ -74,8 +79,6 @@ class Sinal implements IToken
         // atualiza os dados do caracter atual 
         $chAtual = $dadosProxCaracter['chAtual'];
         $idChAtual = $dadosProxCaracter['idChAtual'];
-
-        
 
         $relatorio = $this->gerarRelatorio($token);
 
@@ -90,24 +93,26 @@ class Sinal implements IToken
     public static function ehSinal($sinal)
     {
         self::setArraySinais();
-        
+
         $existeSinal = self::getSinal($sinal);
-        
-        if(count($existeSinal) > 0){
+
+        if (count($existeSinal) > 0)
+        {
             return true;
         }
         return false;
     }
-    
-    
+
     /*
      * Retorna os dados de um sinal específico
      * @return void
      */
-    public static function getSinal($sinal){
+    public static function getSinal($sinal)
+    {
         foreach (self::$arraySinais as $value)
         {
-            if($sinal === $value[1]){
+            if ($sinal === $value[1])
+            {
                 return $value;
             }
         }
@@ -134,13 +139,13 @@ class Sinal implements IToken
         self::$arraySinais = array(
             0 => array("ponto", "."),
             1 => array("virgula", ","),
-            2 => array("ponto_virgula" , ";"),
+            2 => array("ponto_virgula", ";"),
             3 => array("mais", "+"),
             4 => array("menos", "-"),
             5 => array("vezes", "*"),
             6 => array("barra", "/"),
-            7 => array("abre_parenteses" ,"("),
-            8 => array("fecha_parenteses" , ")"),
+            7 => array("abre_parenteses", "("),
+            8 => array("fecha_parenteses", ")"),
             9 => array("igual", "="),
         );
     }

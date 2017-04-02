@@ -1,17 +1,11 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace App\Lexico;
 
 use App\Codigo\Codigo;
 
 /**
- * Description of Algarismo
+ * Classe utilizada para verificação e criação de token da categoria numero .
  *
  * @author Peter Clayder e Fernanda Pires
  */
@@ -19,45 +13,30 @@ class Algarismo implements IToken
 {
 
     /**
+     * Recebe a chave que o token pertence. 
+     * Essa chave é referente ao array $simbolos da classe TabelaSimbolos 
+     * @var string 
+     */
+    private $tipoToken;
+
+    /**
      *
      * @var Codigo
      */
     private $codigo;
-    
-    /**
-     *
-     * @var array
-     */
-    private $relatorioTokens;
-
-    /**
-     *
-     * @var array
-     */
-    private $tabelaToken;
-    
 
     public function __construct(Codigo $codigo)
     {
         $this->codigo = $codigo;
+        $this->tipoToken = "numero";
     }
 
     public function gerarToken($token, $chAtual, $idChAtual)
     {
-        
+
         do
-        {
-            echo "############################";
-            echo "<br />";
-            echo "Gerar token Algorismo";
-            echo "<br />";
-            echo "ch atual: " . $chAtual;
-            echo "<br />";
-            echo "token: " . $token;
-            echo "<br />";
-            echo "id: " . $idChAtual;
-            echo "<br />";
-            echo "############################";
+        {    
+            //Teste\Teste::gerarToken("Algarismo", $chAtual, $token, $idChAtual);
 
             // forma o token
             $token = $token . $chAtual;
@@ -69,17 +48,21 @@ class Algarismo implements IToken
             $chAtual = $dadosProxCaracter['chAtual'];
             $idChAtual = $dadosProxCaracter['idChAtual'];
         } while (is_numeric($chAtual) && $token !== "EOF");
-        
-        
+
+
         $relatorio = $this->gerarRelatorio($token, $chAtual, $idChAtual);
-        
+
         return array('token' => $token, 'chAtual' => $chAtual, 'idChatual' => $idChAtual, 'relatorio' => $relatorio);
     }
 
+    /**
+     * Implementação da interface IToken 
+     * @param type $token
+     * @return array Description
+     */
     public function gerarRelatorio($token)
-    { 
-        return Relatorio::get($token, "numero");
+    {
+        return Relatorio::get($token, $this->tipoToken);
     }
-
 
 }

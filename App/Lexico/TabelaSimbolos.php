@@ -3,27 +3,27 @@
 namespace App\Lexico;
 
 /**
- * Description of TabelaSimbolos
- *
+ * Classe utilizada para manipular os símbolos da linguagem.  
+ * @author Peter Clayder e Fernanda Pires
  */
 class TabelaSimbolos
 {
 
     /**
-     *
+     * Array com os símbolos da linguagem 
      * @var array
      */
     private static $simbolos;
 
     /**
-     *
+     * Array com as palavras reservadas da linguagem
      * @var array
-     */
+    */
     private static $palavrasReservadas = array();
 
     /**
      * 
-     * @return array
+     * @return array 
      */
     public static function getSimbolos()
     {
@@ -48,22 +48,22 @@ class TabelaSimbolos
             ),
             'abre_parenteses' => array(
                 "id" => 3,
-                "descricao" => "abre_parenteses",
+                "descricao" => "abre parenteses",
                 "reservado" => false,
             ),
             'fecha_parenteses' => array(
                 "id" => 4,
-                "descricao" => "fecha_parenteses",
+                "descricao" => "fecha parenteses",
                 "reservado" => false,
             ),
             'virgula' => array(
                 "id" => 5,
-                "descricao" => "virgula",
+                "descricao" => "vírgula",
                 "reservado" => false,
             ),
             'ponto_virgula' => array(
                 "id" => 6,
-                "descricao" => "ponto_virgula",
+                "descricao" => "ponto e vírgula",
                 "reservado" => false,
             ),
             'begin' => array(
@@ -163,22 +163,22 @@ class TabelaSimbolos
             ),
             'maior_igual' => array(
                 "id" => 26,
-                "descricao" => "maior_igual",
+                "descricao" => "maior igual",
                 "reservado" => false,
             ),
             'menor_igual' => array(
                 "id" => 27,
-                "descricao" => "menor_igual",
+                "descricao" => "menor igual",
                 "reservado" => false,
             ),
             'variavel' => array(
                 "id" => 28,
-                "descricao" => "variavel",
+                "descricao" => "variável",
                 "reservado" => false,
             ),
             'numero' => array(
                 "id" => 29,
-                "descricao" => "numero",
+                "descricao" => "Int",
                 "reservado" => false,
             ),
             'EOF' => array(

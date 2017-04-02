@@ -5,11 +5,18 @@ namespace App\Lexico;
 use App\Codigo\Codigo;
 
 /**
- * Description of Letra
+ * Classe utilizada para verificação e criação de token da categoria variavel e palavra reservada .
  * @author Peter Clayder e Fernanda Pires
  */
 class Letra implements IToken
 {
+
+    /**
+     * Recebe a chave que o token pertence. 
+     * Essa chave é referente ao array $simbolos da classe TabelaSimbolos 
+     * @var string 
+     */
+    private $tipoToken;
 
     /**
      *
@@ -55,17 +62,7 @@ class Letra implements IToken
     {
         do
         {
-            echo "############################";
-            echo "<br />";
-            echo "Gerar token Letra";
-            echo "<br />";
-            echo "ch atual: " . $chAtual;
-            echo "<br />";
-            echo "token: " . $token;
-            echo "<br />";
-            echo "id: " . $idChAtual;
-            echo "<br />";
-            echo "############################";
+            //Teste\Teste::gerarToken("Letra", $chAtual, $token, $idChAtual);
 
             // forma o token
             $token = $token . $chAtual;
@@ -83,19 +80,24 @@ class Letra implements IToken
         return array('token' => $token, 'chAtual' => $chAtual, 'idChatual' => $idChAtual, 'relatorio' => $relatorio);
     }
 
+    /**
+     * Implementação da interface IToken 
+     * @param type $token
+     * @return array Description
+     */
     public function gerarRelatorio($token)
     {
         $palavrasReservadas = TabelaSimbolos::getPalavrasReservadas();
-        
+
         if (!in_array($token, $palavrasReservadas))
         {
-            $chave = "variavel";
+            $this->tipoToken = "variavel";
         } else
         {
-            $chave = $token;
+            $this->tipoToken = $token;
         }
-        
-        return Relatorio::get($token, $chave);
+
+        return Relatorio::get($token, $this->tipoToken);
     }
 
 }

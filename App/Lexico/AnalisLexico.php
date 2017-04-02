@@ -55,6 +55,12 @@ class AnalisLexico
     private $existeCaracterInvalido = false;
 
     /**
+     * Recebe o caracter (token) inválido
+     * @var type 
+     */
+    private $tokenInvalido;
+
+    /**
      * 
      * @param Codigo $codigo
      */
@@ -96,7 +102,7 @@ class AnalisLexico
     {
         // Recebe o valor do caracter atual 
         $this->chAtual = $this->codigo->getCaracterCodigo($this->idChAtual);
-        
+
         $dadosEliminarCaracter = $this->codigo->eliminaCaracterInvalidos($this->idChAtual, $this->chAtual);
 
         $this->setDadosChAtual($dadosEliminarCaracter['idChAtual'], $dadosEliminarCaracter['chAtual']);
@@ -143,6 +149,7 @@ class AnalisLexico
 
             default:
                 $this->existeCaracterInvalido = true;
+                $this->tokenInvalido = $this->chAtual;
                 break;
         }
 
@@ -152,10 +159,16 @@ class AnalisLexico
             $this->geracaoToken($objGerarToken);
         } else
         {
-            echo "token invalido";
+            $this->tokenInvalido = $this->chAtual;
         }
     }
 
+    /**
+     * Método para realizar a geração de tokens.
+     * Recebe como parametro uma variável do tipo IToken ( interface )
+     * 
+     * @param \App\Lexico\IToken $gerar
+     */
     public function geracaoToken(IToken $gerar)
     {
 
@@ -178,6 +191,7 @@ class AnalisLexico
         } else
         {
             $this->existeCaracterInvalido = true;
+            $this->tokenInvalido = $this->chAtual;
         }
     }
 
@@ -186,15 +200,7 @@ class AnalisLexico
      */
     public function imprime()
     {
-        $qtdTokens = count($this->arrayTokens);
-        for ($i = 0; $i < $qtdTokens; $i++)
-        {
-            if ($this->arrayTokens[$i] != " ")
-            {
-                echo $this->arrayTokens[$i];
-                echo "<br />";
-            }
-        }
+        echo $this->getToken();
     }
 
     /**
@@ -240,5 +246,12 @@ class AnalisLexico
     {
         return $this->existeCaracterInvalido;
     }
+    
+    public function getTokenInvalido()
+    {
+        return $this->tokenInvalido;
+    }
+
+
 
 }

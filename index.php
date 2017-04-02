@@ -18,8 +18,8 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <!-- <body style="background-color: #222"> -->
-    <body>
+    <body style="background-color: #222">
+    <!-- <body> -->
 
         <div class="container" style="margin-top: 30px;">
             <form action="compilador.php" method="POST">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="row" >
-                    <div class="col-md-5" style="height: 630px; overflow-x: 200px">
+                    <div class="col-md-5" style="height: 630px;">
 
                         <textarea name="codigo" class="text-codigo" placeholder="escreva o código aqui ..." autofocus>
                             <?php echo isset($inputCodigo) ? $inputCodigo : ""; ?>
@@ -40,7 +40,7 @@
 
 
                     </div>
-                    <div class="col-md-7" style="height: 630px;">
+                    <div class="col-md-7" style="height: 630px; overflow-y: auto">
                             <?php include("resultado.php"); ?>
                     </div>
                 </div>

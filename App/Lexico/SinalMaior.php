@@ -50,7 +50,7 @@ class SinalMaior implements IToken
     public function gerarToken($token, $chAtual, $idChAtual)
     {
 
-        Teste\Teste::gerarToken("maior", $chAtual, $token, $idChAtual);
+        //Teste\Teste::gerarToken("maior", $chAtual, $token, $idChAtual);
 
         // próximo caracter 
         $dadosProxCaracter = $this->codigo->proximoCaracter($idChAtual, $chAtual);
