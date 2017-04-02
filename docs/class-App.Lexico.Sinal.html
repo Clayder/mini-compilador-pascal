@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class App\Lexico\Sinal | Mini compilador para pascal</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?70c1d062672daa3f906b72e4f5d03d4bc5c4174d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Mini compilador para pascal</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-App.Lexico.html" title="Summary of App\Lexico"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+
+
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-App.html">
+							App<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-App.Codigo.html">
+							Codigo						</a>
+							</li>
+					<li class="active">
+						<a href="namespace-App.Lexico.html">
+							Lexico						</a>
+							</li>
+								</ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-App.Lexico.Algarismo.html">Algarismo</a></li>
+				<li><a href="class-App.Lexico.AnalisLexico.html">AnalisLexico</a></li>
+				<li><a href="class-App.Lexico.Letra.html">Letra</a></li>
+				<li><a href="class-App.Lexico.Relatorio.html">Relatorio</a></li>
+				<li class="active"><a href="class-App.Lexico.Sinal.html">Sinal</a></li>
+				<li><a href="class-App.Lexico.SinalMaior.html">SinalMaior</a></li>
+				<li><a href="class-App.Lexico.SinalMenor.html">SinalMenor</a></li>
+				<li><a href="class-App.Lexico.SinalPontoIgual.html">SinalPontoIgual</a></li>
+				<li><a href="class-App.Lexico.TabelaSimbolos.html">TabelaSimbolos</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-App.Lexico.IToken.html">IToken</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class Sinal</h1>
+
+
+	<div class="description">
+	<p>Classe utilizada para verificação e criação de token da categoria sinal.
+Lista de possíveis tokens:</p>
+
+<p>1) +
+2) -
+3) *
+4) /
+5) (
+6) )
+7) =
+8) .
+9) ;
+10) ,</p>
+	</div>
+
+	<dl class="tree well">
+		<dd style="padding-left:0px">
+<b><span>App\Lexico\Sinal</span></b>			
+			 implements 
+				<a href="class-App.Lexico.IToken.html"><span>App\Lexico\IToken</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-App.html">App</a>\<a href="namespace-App.Lexico.html">Lexico</a><br>
+		
+
+				<b>Author:</b>
+				Fernanda Pires<br>
+				<b>Author:</b>
+				Peter Clayder<br>
+			<b>Located at</b> <a href="source-class-App.Lexico.Sinal.html#8-155" title="Go to source code">Lexico/Sinal.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="__construct" id="___construct">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___construct">#</a>
+			<code><a href="source-class-App.Lexico.Sinal.html#41-48" title="Go to source code">__construct</a>( <span><code><a href="class-App.Codigo.Codigo.html">App\Codigo\Codigo</a></code> <var>$codigo</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$codigo</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="gerarRelatorio" id="_gerarRelatorio">
+
+			<td class="attributes"><code>
+				 public 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_gerarRelatorio">#</a>
+			<code><a href="source-class-App.Lexico.Sinal.html#50-60" title="Go to source code">gerarRelatorio</a>( <span>type <var>$token</var></span> )</code>
+
+			<div class="description short">
+				<p>Implementação da interface IToken</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Implementação da interface IToken</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$token</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						array<br>Description
+					</div>
+
+
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-App.Lexico.IToken.html#_gerarRelatorio">App\Lexico\IToken::gerarRelatorio()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="gerarToken" id="_gerarToken">
+
+			<td class="attributes"><code>
+				 public 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_gerarToken">#</a>
+			<code><a href="source-class-App.Lexico.Sinal.html#62-88" title="Go to source code">gerarToken</a>( <span>string <var>$token</var></span>, <span>type <var>$chAtual</var></span>, <span>integer <var>$idChAtual</var></span> )</code>
+
+			<div class="description short">
+				<p>Analisa o sinal atual, todos os sinais possuem apenas 1 caracter</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Analisa o sinal atual, todos os sinais possuem apenas 1 caracter</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$token</var></dt>
+						<dd></dd>
+						<dt><var>$chAtual</var></dt>
+						<dd></dd>
+						<dt><var>$idChAtual</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						array
+					</div>
+
+
+
+
+					<h4>Implementation of</h4>
+					<div class="list"><code><a href="class-App.Lexico.IToken.html#_gerarToken">App\Lexico\IToken::gerarToken()</a></code></div>
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="ehSinal" id="_ehSinal">
+
+			<td class="attributes"><code>
+				 public static
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_ehSinal">#</a>
+			<code><a href="source-class-App.Lexico.Sinal.html#90-106" title="Go to source code">ehSinal</a>( <span>type <var>$sinal</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$sinal</var></dt>
+						<dd>$caracter</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getSinal" id="_getSinal">
+
+			<td class="attributes"><code>
+				 public static
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getSinal">#</a>
+			<code><a href="source-class-App.Lexico.Sinal.html#112-122" title="Go to source code">getSinal</a>( <span> <var>$sinal</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getArraySinais" id="_getArraySinais">
+
+			<td class="attributes"><code>
+				 public 
+				array
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getArraySinais">#</a>
+			<code><a href="source-class-App.Lexico.Sinal.html#124-131" title="Go to source code">getArraySinais</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						array
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="setArraySinais" id="_setArraySinais">
+
+			<td class="attributes"><code>
+				 public static
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_setArraySinais">#</a>
+			<code><a href="source-class-App.Lexico.Sinal.html#133-153" title="Go to source code">setArraySinais</a>( )</code>
+
+			<div class="description short">
+				<p>Cria o array de sinais, onde cada posição do array é um array.
+Na posição [0]=> chave do sinal, [1]=> sinal.
+A chave do sinal é a mesma chave utilizado no array de simbolos.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Cria o array de sinais, onde cada posição do array é um array.
+Na posição [0]=> chave do sinal, [1]=> sinal.
+A chave do sinal é a mesma chave utilizado no array de simbolos.</p>
+
+
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Properties summary</h2></div>
+			<table class="summary table table-bordered table-striped properties" id="properties">
+		<tr data-order="arraySinais" id="$arraySinais">
+			<td class="attributes"><code>
+				private static 
+				array
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-App.Lexico.Sinal.html#29-33" title="Go to source code"><var>$arraySinais</var></a>
+
+				<div class="description short">
+					<p>Armazena os tokens ( sinais ) que a linguagem possui</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>Armazena os tokens ( sinais ) que a linguagem possui</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$arraySinais" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="codigo" id="$codigo">
+			<td class="attributes"><code>
+				private  
+				<code><a href="class-App.Codigo.Codigo.html">App\Codigo\Codigo</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-App.Lexico.Sinal.html#35-39" title="Go to source code"><var>$codigo</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$codigo" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		Mini compilador para pascal API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

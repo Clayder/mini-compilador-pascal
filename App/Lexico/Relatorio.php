@@ -3,13 +3,16 @@
 namespace App\Lexico;
 
 /**
- * Description of Relatorio
+ * 
  *
- * @author Peter Clayder e Fernanda Pires
+ * @author Fernanda Pires
+ * @author Peter Clayder
  */
 class Relatorio
 {
-    public static function get($token, $chave){
+
+    public static function get($token, $chave)
+    {
         $tabelaToken = array(
             "id" => TabelaSimbolos::getSimbolos()[$chave]['id'],
             "descricao" => TabelaSimbolos::getSimbolos()[$chave]['descricao'],
@@ -19,4 +22,5 @@ class Relatorio
 
         return $tabelaToken;
     }
+
 }

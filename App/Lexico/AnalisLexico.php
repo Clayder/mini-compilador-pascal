@@ -5,8 +5,10 @@ namespace App\Lexico;
 use App\Codigo\Codigo;
 
 /**
- * Description of AnalisLexico
- * @author Peter Clayder e Fernanda Pires
+ * Analisador léxico 
+ * 
+ * @author Fernanda Pires
+ * @author Peter Clayder
  */
 class AnalisLexico
 {
@@ -242,11 +244,19 @@ class AnalisLexico
         return $this->relatorioTokens;
     }
 
+    /**
+     * 
+     * @return type
+     */
     public function getExisteCaracterInvalido()
     {
         return $this->existeCaracterInvalido;
     }
     
+    /**
+     * 
+     * @return type
+     */
     public function getTokenInvalido()
     {
         return $this->tokenInvalido;

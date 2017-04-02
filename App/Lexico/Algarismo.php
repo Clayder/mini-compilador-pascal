@@ -7,7 +7,8 @@ use App\Codigo\Codigo;
 /**
  * Classe utilizada para verificação e criação de token da categoria numero .
  *
- * @author Peter Clayder e Fernanda Pires
+ * @author Fernanda Pires
+ * @author Peter Clayder
  */
 class Algarismo implements IToken
 {
@@ -25,19 +26,31 @@ class Algarismo implements IToken
      */
     private $codigo;
 
+    /**
+     * 
+     * @param Codigo $codigo
+     */
     public function __construct(Codigo $codigo)
     {
         $this->codigo = $codigo;
         $this->tipoToken = "numero";
     }
 
+    /**
+     * Analisa a letra atual e percorre os próximos carácteres do código, 
+     * enquanto for algarismo. 
+     * O token é formado, concatenando os caracteres encontrados.
+     * @param string $token
+     * @param type $chAtual
+     * @param int $idChAtual
+     * @return array
+     */
     public function gerarToken($token, $chAtual, $idChAtual)
     {
 
         do
-        {    
+        {
             //Teste\Teste::gerarToken("Algarismo", $chAtual, $token, $idChAtual);
-
             // forma o token
             $token = $token . $chAtual;
 

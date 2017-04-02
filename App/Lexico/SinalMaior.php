@@ -11,7 +11,8 @@ use App\Codigo\Codigo;
  * 1) >
  * 2) >=
  *
- * @author Peter Clayder e Fernanda Pires
+ * @author Fernanda Pires
+ * @author Peter Clayder
  */
 class SinalMaior implements IToken
 {
@@ -51,7 +52,6 @@ class SinalMaior implements IToken
     {
 
         //Teste\Teste::gerarToken("maior", $chAtual, $token, $idChAtual);
-
         // próximo caracter 
         $dadosProxCaracter = $this->codigo->proximoCaracter($idChAtual, $chAtual);
 

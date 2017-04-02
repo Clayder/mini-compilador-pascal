@@ -3,51 +3,53 @@
 namespace App\Codigo;
 
 /**
- * Description of Codigo
- *
+ * Classe utilizada para analisar o código fornecido pelo textarea. 
+ * 
+ * @author Fernanda Pires
+ * @author Peter Clayder
  */
 class Codigo
 {
+
     /**
      * Tamanho do código
      * @var int $tamCodigo
      */
     private $tamCodigo;
-    
+
     /**
      * Array de caracteres do código
-     * exemplo de código: 
-     * var a b c d
-     * if
-     * Resultado:                                  
-     * Array
-        (
-            [0] => v
-            [1] => a
-            [2] => r
-            [3] =>  
-            [4] => a
-            [5] =>  
-            [6] => b
-            [7] =>  
-            [8] => c
-            [9] =>  
-            [10] => d
-            [11] => 
-            [12] => 
-
-            [13] => i
-            [14] => f
-            [15] =>  
-            [16] => E
-            [17] => O
-            [18] => F
-        )
+     * @example description exemplo de código: 
+     * @example var a b c d
+     * @example if
+     * @example Resultado:                                  
+     * @example Array
+     * @example (
+     * @example [0] => v
+     * @example [1] => a
+     * @example [2] => r
+     * @example [3] =>
+     * @example [4] => a
+     * @example [5] =>
+     * @example [6] => b
+     * @example [7] =>
+     * @example [8] => c
+     * @example [9] =>
+     * @example [10] => d
+     * @example [11] =>
+     * @example [12] =>
+     * @example [13] => i
+     * @example [14] => f
+     * @example [15] =>
+     * @example [16] => E
+     * @example [17] => O
+     * @example [18] => F
+     * @example )
      * @var array $arrayCodigo
      */
     private $arrayCodigo;
 
-     /**
+    /**
      * 
      * @param array $arrayCodigo
      */
@@ -60,12 +62,12 @@ class Codigo
     /**
      * 
      * @param array $arrayCodigo
-    */
+     */
     public function setCodigo($arrayCodigo)
     {
         $this->arrayCodigo = $arrayCodigo;
     }
-    
+
     /**
      * 
      * @return array
@@ -74,13 +76,14 @@ class Codigo
     {
         return $this->arrayCodigo;
     }
-    
+
     /**
      * Retorna um carácter específico pela sua posição.
      * @param int $idCaracter
      * @return type
      */
-    public function getCaracterCodigo($idCaracter){
+    public function getCaracterCodigo($idCaracter)
+    {
         return $this->arrayCodigo[$idCaracter];
     }
 
@@ -94,34 +97,34 @@ class Codigo
     {
         while ($chAtual == " " || $chAtual == "\n" || $chAtual == "\r")
         {
-            
+
             //Teste\Teste::gerarToken("Entrei eliminarCaracter", $chAtual, "", $idChAtual);
-             
-             
+
+
             $dadosProximo = $this->proximoCaracter($idChAtual, $chAtual);
             $chAtual = $dadosProximo['chAtual'];
             $idChAtual = $dadosProximo['idChAtual'];
         }
-        
+
         return array('idChAtual' => $idChAtual, 'chAtual' => $chAtual);
     }
-    
-    
+
     /**
      * Vai para o próximo carácter, sempre verificando se já chegou no final do código.
      * @param int $idChAtual
      * @param type $chAtual
      * @return array
      */
-    public  function proximoCaracter($idChAtual, $chAtual)
-    {        
+    public function proximoCaracter($idChAtual, $chAtual)
+    {
         // verifico se existe o próximo caracter
         if ($idChAtual < $this->tamCodigo - 1)
         {
             $idChAtual = $idChAtual + 1;
             $chAtual = $this->arrayCodigo[$idChAtual];
         }
-        
+
         return array('idChAtual' => $idChAtual, 'chAtual' => $chAtual);
     }
+
 }

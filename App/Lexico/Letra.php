@@ -6,7 +6,9 @@ use App\Codigo\Codigo;
 
 /**
  * Classe utilizada para verificação e criação de token da categoria variavel e palavra reservada .
- * @author Peter Clayder e Fernanda Pires
+ * 
+ * @author Fernanda Pires
+ * @author Peter Clayder
  */
 class Letra implements IToken
 {
@@ -63,7 +65,6 @@ class Letra implements IToken
         do
         {
             //Teste\Teste::gerarToken("Letra", $chAtual, $token, $idChAtual);
-
             // forma o token
             $token = $token . $chAtual;
 

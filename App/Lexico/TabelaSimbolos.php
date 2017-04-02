@@ -4,7 +4,9 @@ namespace App\Lexico;
 
 /**
  * Classe utilizada para manipular os símbolos da linguagem.  
- * @author Peter Clayder e Fernanda Pires
+ * 
+ * @author Fernanda Pires
+ * @author Peter Clayder
  */
 class TabelaSimbolos
 {
@@ -18,7 +20,7 @@ class TabelaSimbolos
     /**
      * Array com as palavras reservadas da linguagem
      * @var array
-    */
+     */
     private static $palavrasReservadas = array();
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Lexico;
 
 use App\Codigo\Codigo;
@@ -19,7 +20,8 @@ use App\Codigo\Codigo;
  * 9) ;
  * 10) ,
  * 
- * @author Peter Clayder e Fernanda Pires
+ * @author Fernanda Pires
+ * @author Peter Clayder
  */
 class Sinal implements IToken
 {

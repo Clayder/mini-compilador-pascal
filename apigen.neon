@@ -1,0 +1,29 @@
+# Título que será exibido na documentação
+title: 'Mini compilador para pascal'
+
+# Template utilizado na documentação: default, bootstrap
+templateTheme: 'bootstrap'
+
+# Diretório onde está o código-fonte que deve ter a documentação gerada
+source:
+    - 'App'
+
+# Diretórios que devem ser ignorados durante o processo de geração da documentação
+exclude:
+    - 'Teste'
+
+
+# Diretório onde a documentação deverá ser criada
+destination: 'docs'
+
+# Níveis de acesso a variáveis e funções que devem ser documentados
+accessLevels:
+    - 'public'
+    - 'private'
+    - 'protected'
+
+# Se marcado como FALSE, as marcações @deprecated não serão adicionadas à documentação
+deprecated: false
+
+# Se marcado como TRUE, as marcações @todo serão adicionadas à documentação
+todo: false

@@ -9,7 +9,8 @@ use App\Codigo\Codigo;
  * Token: := 
  * Observação: A linguagem não permite que exista o carácter : sem a presença do carácter = 
  * 
- * @author Peter Clayder e Fernanda Pires
+ * @author Fernanda Pires
+ * @author Peter Clayder
  */
 class SinalPontoIgual implements IToken
 {
@@ -41,7 +42,7 @@ class SinalPontoIgual implements IToken
      * Implementação da interface IToken 
      * @param type $token
      * @return array Description
-    */
+     */
     public function gerarRelatorio($token)
     {
         return Relatorio::get($token, $this->tipoToken);
@@ -59,7 +60,6 @@ class SinalPontoIgual implements IToken
     {
 
         //Teste\Teste::gerarToken("Atribuição", $chAtual, $token, $idChAtual);
-
         // próximo caracter 
         $dadosProxCaracter = $this->codigo->proximoCaracter($idChAtual, $chAtual);
 
@@ -78,7 +78,7 @@ class SinalPontoIgual implements IToken
 
             $token = $chAtual . "=";
             $dadosProxCaracter = $this->codigo->proximoCaracter($idChProximo, $chProximo);
-            
+
             $relatorio = $this->gerarRelatorio($token);
 
             return array('token' => $token, 'chAtual' => $dadosProxCaracter['chAtual'], 'idChatual' => $dadosProxCaracter['idChAtual'], 'relatorio' => $relatorio);
