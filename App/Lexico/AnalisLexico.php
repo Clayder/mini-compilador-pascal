@@ -61,6 +61,12 @@ class AnalisLexico
      * @var type 
      */
     private $tokenInvalido;
+    
+    /**
+     * Recebe o número da linha atual
+     * @var int 
+     */
+    private $linhaAtual;
 
     /**
      * 
@@ -95,7 +101,7 @@ class AnalisLexico
      * Percorre o código criando os tokens, a partir do caracter atual (chAtual). 
      * Quando terminar de formar o token em relação ao caracter atual, 
      * o próximo token é escolhido (atualiza chAtual e idAtual, essa atualização é 
-     * feita no "do while" do método analisarLetras da classe Letra) com issp método 
+     * feita no "do while" do método responsável) com isso o método 
      * (nextToken) é finalizado. Depois de finalizar o método o programa volta para 
      * a main (compilador.php), dando continuidade na execução do “do while”. 
      * @return void
@@ -148,6 +154,12 @@ class AnalisLexico
                 $objGerarToken = new SinalPontoIgual($this->codigo);
 
                 break;
+            
+              case ($this->chAtual === "{"):
+
+                $objGerarToken = new Comentario($this->codigo);
+
+                break;
 
             default:
                 $this->existeCaracterInvalido = true;
@@ -162,6 +174,7 @@ class AnalisLexico
         } else
         {
             $this->tokenInvalido = $this->chAtual;
+            $this->linhaAtual = Codigo::$linha;
         }
     }
 
@@ -194,9 +207,16 @@ class AnalisLexico
         {
             $this->existeCaracterInvalido = true;
             $this->tokenInvalido = $this->chAtual;
+            $this->linhaAtual = Codigo::$linha;
         }
     }
+    
+    public function getLinhaAtual()
+    {
+        return $this->linhaAtual;
+    }
 
+    
     /**
      * @return void
      */

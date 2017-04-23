@@ -48,6 +48,12 @@ class Codigo
      * @var array $arrayCodigo
      */
     private $arrayCodigo;
+    
+    /**
+     * Conta a quantidade de linha
+     * @var int
+     */
+    public static $linha = 1;
 
     /**
      * 
@@ -100,7 +106,9 @@ class Codigo
 
             //Teste\Teste::gerarToken("Entrei eliminarCaracter", $chAtual, "", $idChAtual);
 
-
+            if($chAtual == "\n")
+                self::$linha++;
+            
             $dadosProximo = $this->proximoCaracter($idChAtual, $chAtual);
             $chAtual = $dadosProximo['chAtual'];
             $idChAtual = $dadosProximo['idChAtual'];

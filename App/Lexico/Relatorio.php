@@ -11,13 +11,14 @@ namespace App\Lexico;
 class Relatorio
 {
 
-    public static function get($token, $chave)
+    public static function get($token, $chave, $ignorar = false)
     {
         $tabelaToken = array(
-            "id" => TabelaSimbolos::getSimbolos()[$chave]['id'],
-            "descricao" => TabelaSimbolos::getSimbolos()[$chave]['descricao'],
-            "lexema" => $token,
-            "reservado" => TabelaSimbolos::getSimbolos()[$chave]['reservado'],
+            "id" => ($ignorar)? null : TabelaSimbolos::getSimbolos()[$chave]['id'],
+            "descricao" => ($ignorar)? null : TabelaSimbolos::getSimbolos()[$chave]['descricao'],
+            "lexema" => ($ignorar)? null : $token,
+            "reservado" => ($ignorar)? null : TabelaSimbolos::getSimbolos()[$chave]['reservado'],
+            "linha" => ($ignorar)? null : \App\Codigo\Codigo::$linha
         );
 
         return $tabelaToken;

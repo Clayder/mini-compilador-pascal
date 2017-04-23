@@ -40,5 +40,11 @@ class Teste
         echo "<br />";
         echo "############################";
     }
+    
+    public static function pre(array $array){
+        echo "<pre>";
+        print_r($array);
+        echo "</pre>";
+    }
 
 }

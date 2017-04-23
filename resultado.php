@@ -65,26 +65,28 @@
         </thead> 
         <tbody> 
             <?php foreach ($lexico->getRelatorioTokens() as $token): ?>
-                <tr class="success text-center"> 
-                    <td><?php echo $token['id']; ?> </td> 
-                    <td><?php echo $token['descricao']; ?> </td> 
-                    <td><?php echo $token['lexema']; ?> </td>
-                    <td>
-                        <?php if ($token['reservado']): ?>
-                            <span class='glyphicon glyphicon-ok text-success' aria-hidden='true'></span>
-                        <?php else: ?>
-                            <span class='glyphicon glyphicon-remove text-danger' aria-hidden='true'></span>
-                        <?php endif; ?>
-                    </td> 
-                </tr>
+                <?php if ($token['id'] != null): ?>
+                    <tr class="success text-center"> 
+                        <td><?php echo $token['id']; ?> </td> 
+                        <td><?php echo $token['descricao']; ?> </td> 
+                        <td><?php echo $token['lexema']; ?> </td>
+                        <td>
+                            <?php if ($token['reservado']): ?>
+                                <span class='glyphicon glyphicon-ok text-success' aria-hidden='true'></span>
+                            <?php else: ?>
+                                <span class='glyphicon glyphicon-remove text-danger' aria-hidden='true'></span>
+                            <?php endif; ?>
+                        </td> 
+                    </tr>
+                <?php endif; ?>
             <?php endforeach; ?>
             <?php if ($lexico->getExisteCaracterInvalido()): ?>
                 <tr class="danger text-center"> 
                     <td> <span class='glyphicon glyphicon-remove text-danger' aria-hidden='true'></span> </td> 
-                    <td> Token inválido </td> 
+                    <td> Token inválido linha:  <?php echo $lexico->getLinhaAtual(); ?></td> 
                     <td>  <?php echo $lexico->getTokenInvalido(); ?> </td>
                     <td>
-                       <span class='glyphicon glyphicon-remove text-danger' aria-hidden='true'></span>
+                        <span class='glyphicon glyphicon-remove text-danger' aria-hidden='true'></span>
                     </td> 
                 </tr>
             <?php endif; ?>

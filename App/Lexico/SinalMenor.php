@@ -62,7 +62,7 @@ class SinalMenor implements IToken
     public function gerarToken($token, $chAtual, $idChAtual)
     {
 
-        Teste\Teste::gerarToken("menor", $chAtual, $token, $idChAtual);
+        //Teste\Teste::gerarToken("menor", $chAtual, $token, $idChAtual);
        
         // próximo caracter 
         $dadosProxCaracter = $this->codigo->proximoCaracter($idChAtual, $chAtual);
