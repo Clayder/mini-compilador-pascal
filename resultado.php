@@ -46,6 +46,10 @@
                     <pre>
                         <?php print_r($lexico->getArrayTokens()); ?>
                     </pre>
+                    
+                     <pre>
+                        <?php print_r($lexico->getArrayTokensLinha()); ?>
+                    </pre>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

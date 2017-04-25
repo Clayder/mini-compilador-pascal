@@ -46,7 +46,7 @@ if (isset($_POST['codigo']))
      */
     $arrayCodigo = str_split($codigo);
     
-    App\Lexico\Teste\Teste::pre($arrayCodigo);
+    //App\Lexico\Teste\Teste::pre($arrayCodigo);
 
     // carrega a tabela de simbolos
     TabelaSimbolos::setSimbolos();

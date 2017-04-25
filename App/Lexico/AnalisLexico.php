@@ -26,6 +26,12 @@ class AnalisLexico
     private $arrayTokens;
 
     /**
+     * Lista os tokens e o número da sua linha
+     * @var array
+     */
+    private $arrayTokensLinha;
+
+    /**
      * Recebe o id do caracter atual, que está sendo analisado
      * @var int 
      */
@@ -61,7 +67,7 @@ class AnalisLexico
      * @var type 
      */
     private $tokenInvalido;
-    
+
     /**
      * Recebe o número da linha atual
      * @var int 
@@ -154,8 +160,8 @@ class AnalisLexico
                 $objGerarToken = new SinalPontoIgual($this->codigo);
 
                 break;
-            
-              case ($this->chAtual === "{"):
+
+            case ($this->chAtual === "{"):
 
                 $objGerarToken = new Comentario($this->codigo);
 
@@ -202,6 +208,10 @@ class AnalisLexico
 
             $this->token = $tokenGerado['token'];
             $this->arrayTokens[] = $this->token;
+            $this->arrayTokensLinha[] = array(
+                'token' => $this->token,
+                'linha' => Codigo::$linha
+            );
             $this->relatorioTokens[] = $tokenGerado['relatorio'];
         } else
         {
@@ -210,13 +220,12 @@ class AnalisLexico
             $this->linhaAtual = Codigo::$linha;
         }
     }
-    
+
     public function getLinhaAtual()
     {
         return $this->linhaAtual;
     }
 
-    
     /**
      * @return void
      */
@@ -272,7 +281,7 @@ class AnalisLexico
     {
         return $this->existeCaracterInvalido;
     }
-    
+
     /**
      * 
      * @return type
@@ -280,6 +289,11 @@ class AnalisLexico
     public function getTokenInvalido()
     {
         return $this->tokenInvalido;
+    }
+    
+    public function getArrayTokensLinha()
+    {
+        return $this->arrayTokensLinha;
     }
 
 
