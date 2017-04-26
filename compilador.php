@@ -5,6 +5,10 @@ require 'autoload.php';
 use App\Lexico\AnalisLexico as Lexico;
 use App\Lexico\TabelaSimbolos;
 use App\Codigo\Codigo;
+use App\Sintatico\AnalSintatico as sintatico;
+
+$erroLexico = "";
+$erroSintatico = "";
 
 if (isset($_POST['codigo']))
 {
@@ -15,11 +19,11 @@ if (isset($_POST['codigo']))
     $codigo = $codigo . " EOF";
 
     /**
-     * Separo a string em um array de caracteres 
-     * exemplo de código: 
+     * Separo a string em um array de caracteres
+     * exemplo de código:
      * var a b c d
      * if
-     * Resultado:                                  
+     * Resultado:
      * Array
       (
       [0] => v
@@ -45,7 +49,7 @@ if (isset($_POST['codigo']))
       )
      */
     $arrayCodigo = str_split($codigo);
-    
+
     //App\Lexico\Teste\Teste::pre($arrayCodigo);
 
     // carrega a tabela de simbolos
@@ -64,5 +68,8 @@ if (isset($_POST['codigo']))
 
         //$lexico->imprime();
     } while ($lexico->getToken() !== "EOF" && !$lexico->getExisteCaracterInvalido());
+
+    new Sintatico($lexico->getArrayTokens(), $lexico->getArrayTokensLinha());
+    $erroSintatico = Sintatico::getMsgError();
 }
 include("index.php");

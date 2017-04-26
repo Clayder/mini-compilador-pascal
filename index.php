@@ -27,8 +27,8 @@
                     <div class="col-md-12">
                         <button type="submit" class="btn button-compilar">
                             <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                            run 
-                        </button> 
+                            run
+                        </button>
                     </div>
                 </div>
                 <div class="row" >
@@ -40,8 +40,22 @@
 
 
                     </div>
-                    <div class="col-md-7" style="height: 630px; overflow-y: auto">
-                            <?php include("resultado.php"); ?>
+                    <div class="col-md-7" >
+                      <div class="row" style="height: 300px; overflow-y: auto">
+                        <div class="col-md-12" >
+                          <?php include("resultado.php"); ?>
+                        </div>
+                      </div>
+                      <div class="row" style="">
+                        <h2 class="text-primary">
+                          <span style="color: #000;" class="glyphicon glyphicon-console" aria-hidden="true"></span>
+                          Console
+                        </h2>
+                        <div class="col-md-12"  style="height: 180px; overflow-y: auto; background-color: #000; margin-top: 10px; min-height: 180px">
+                          <?php include("console.php"); ?>
+                        </div>
+                      </div>
+
                     </div>
                 </div>
             </form>

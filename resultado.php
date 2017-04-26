@@ -46,7 +46,7 @@
                     <pre>
                         <?php print_r($lexico->getArrayTokens()); ?>
                     </pre>
-                    
+
                      <pre>
                         <?php print_r($lexico->getArrayTokensLinha()); ?>
                     </pre>
@@ -58,21 +58,21 @@
         </div>
     </div>
 
-    <table class="table table-hover table-bordered" style="margin-top: 40px;"> 
-        <thead> 
-            <tr style="background-color: #ccc"> 
+    <table class="table table-hover table-bordered" style="margin-top: 40px;">
+        <thead>
+            <tr style="background-color: #ccc">
                 <th class="text-center">Id</th>
-                <th class="text-center">Descrição </th> 
-                <th class="text-center">Lexema </th> 
+                <th class="text-center">Descrição </th>
+                <th class="text-center">Lexema </th>
                 <th class="text-center">Palavra reservada </th>
-            </tr> 
-        </thead> 
-        <tbody> 
+            </tr>
+        </thead>
+        <tbody>
             <?php foreach ($lexico->getRelatorioTokens() as $token): ?>
                 <?php if ($token['id'] != null): ?>
-                    <tr class="success text-center"> 
-                        <td><?php echo $token['id']; ?> </td> 
-                        <td><?php echo $token['descricao']; ?> </td> 
+                    <tr class="success text-center">
+                        <td><?php echo $token['id']; ?> </td>
+                        <td><?php echo $token['descricao']; ?> </td>
                         <td><?php echo $token['lexema']; ?> </td>
                         <td>
                             <?php if ($token['reservado']): ?>
@@ -80,23 +80,25 @@
                             <?php else: ?>
                                 <span class='glyphicon glyphicon-remove text-danger' aria-hidden='true'></span>
                             <?php endif; ?>
-                        </td> 
+                        </td>
                     </tr>
                 <?php endif; ?>
             <?php endforeach; ?>
             <?php if ($lexico->getExisteCaracterInvalido()): ?>
-                <tr class="danger text-center"> 
-                    <td> <span class='glyphicon glyphicon-remove text-danger' aria-hidden='true'></span> </td> 
-                    <td> Token inválido linha:  <?php echo $lexico->getLinhaAtual(); ?></td> 
+                <?php
+                $erroLexico .= "<span style='color: red'> Erro </span> <span style='color: #23f617'> léxico </span> na linha: <span style='color: red'>";
+                $erroLexico .= $lexico->getLinhaAtual() . "</span> | ";
+                $erroLexico .= "Token recebido: <span style='color: red'>". $lexico->getTokenInvalido() . "</span> ";
+                ?>
+                <tr class="danger text-center">
+                    <td> <span class='glyphicon glyphicon-remove text-danger' aria-hidden='true'></span> </td>
+                    <td> Token inválido linha:  <?php echo $lexico->getLinhaAtual(); ?></td>
                     <td>  <?php echo $lexico->getTokenInvalido(); ?> </td>
                     <td>
                         <span class='glyphicon glyphicon-remove text-danger' aria-hidden='true'></span>
-                    </td> 
+                    </td>
                 </tr>
             <?php endif; ?>
         </tbody>
     </table>
-
 <?php endif; ?>
-
-

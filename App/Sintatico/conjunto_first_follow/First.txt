@@ -1,0 +1,22 @@
+first(PROG) = {var, begin}
+first(VARS) = {var}
+first(BLOCO) = {begin}
+first(COMS) = {COM, ;} = {print, if, IDENT, for, read, ;}
+first(COM) = {print, if, IDENT, for, read}
+first(ELSE_OPC) = {else}
+first(LISTA_IDENT) = {IDENT}
+first(LISTA_IDENT2) = {,}
+first(EXP) = {TERMO} = {(, IDENT, DIGITO} 
+first(EXP2) = {+,-}
+first(TERMO) = {FATOR} = {(, IDENT, DIGITO} 
+first(TERMO2) = {*,/} 
+first(FATOR) = {(, IDENT, NUM} = {(, IDENT, DIGITO} 
+first(NUM) = {DIGITO}
+first(NUM2) = {DIGITO}
+first(EXP_REL) = {EXP} = {(, IDENT, DIGITO} 
+first(OP_REL) = {=,<>,<,>,<=,>=}
+first(IDENT) = {CARACTER} = {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,x,z}
+first(DIGITO) = {0,1,2,3,4,5,6,7,8,9}
+first(CARACTER) = {a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,x,z}
+
+
