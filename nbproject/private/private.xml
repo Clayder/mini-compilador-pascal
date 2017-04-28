@@ -2,10 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/opt/lampp/htdocs/www/uff/materia-compiladores/mini-compilador-pascal/compilador.php</file>
-            <file>file:/opt/lampp/htdocs/www/uff/materia-compiladores/mini-compilador-pascal/App/Lexico/AnalisLexico.php</file>
-            <file>file:/opt/lampp/htdocs/www/uff/materia-compiladores/mini-compilador-pascal/App/Sintatico/AnalSintatico.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

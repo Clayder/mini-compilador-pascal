@@ -69,7 +69,9 @@ if (isset($_POST['codigo']))
         //$lexico->imprime();
     } while ($lexico->getToken() !== "EOF" && !$lexico->getExisteCaracterInvalido());
 
-    new Sintatico($lexico->getArrayTokens(), $lexico->getArrayTokensLinha());
-    $erroSintatico = Sintatico::getMsgError();
+    if(!$lexico->getExisteCaracterInvalido()){
+      new Sintatico($lexico->getArrayTokens(), $lexico->getArrayTokensLinha());
+      $erroSintatico = Sintatico::getMsgError();
+    }
 }
 include("index.php");
