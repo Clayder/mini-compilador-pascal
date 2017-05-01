@@ -21,7 +21,7 @@ class Comentario implements IToken
     private $codigo;
 
     /**
-     * 
+     *
      * @param Codigo $codigo
      */
     public function __construct(Codigo $codigo)
@@ -44,30 +44,30 @@ class Comentario implements IToken
 
         do
         {
-            Teste\Teste::gerarToken("Letra", $chAtual, $token, $idChAtual);
+            // Teste\Teste::gerarToken("Letra", $chAtual, $token, $idChAtual);
             // forma o token
             $token = $token . $chAtual;
 
-            // próximo caracter 
+            // próximo caracter
             $dadosProxCaracter = $this->codigo->proximoCaracter($idChAtual, $chAtual);
 
-            // atualiza os dados do caracter atual 
+            // atualiza os dados do caracter atual
             $chAtual = $dadosProxCaracter['chAtual'];
             $idChAtual = $dadosProxCaracter['idChAtual'];
 
             $qtdCaracterRestante--;
-            
-            // sair do loop quando acabar o arquivo ou quando terminar o comentário 
+
+            // sair do loop quando acabar o arquivo ou quando terminar o comentário
             if($qtdCaracterRestante == 0 || $chAtual == "}"){
                 $stop = true;
             }
         } while (!$stop);
 
 
-        // próximo caracter 
+        // próximo caracter
         $dadosProxCaracter = $this->codigo->proximoCaracter($idChAtual, $chAtual);
 
-        // atualiza os dados do caracter atual 
+        // atualiza os dados do caracter atual
         $chAtual = $dadosProxCaracter['chAtual'];
         $idChAtual = $dadosProxCaracter['idChAtual'];
 
