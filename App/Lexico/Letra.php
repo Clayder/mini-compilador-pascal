@@ -89,7 +89,6 @@ class Letra implements IToken
     public function gerarRelatorio($token)
     {
         $palavrasReservadas = TabelaSimbolos::getPalavrasReservadas();
-
         if (!in_array($token, $palavrasReservadas))
         {
             $this->tipoToken = "variavel";

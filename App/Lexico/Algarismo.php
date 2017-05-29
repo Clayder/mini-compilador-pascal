@@ -6,7 +6,7 @@ use App\Codigo\Codigo;
 use function PHPSTORM_META\type;
 
 /**
- * Classe utilizada para verificação e criação de token da categoria numero .
+ * Classe utilizada para verificação e criação de token da categoria número inteiro e real .
  *
  * @author Fernanda Pires
  * @author Peter Clayder

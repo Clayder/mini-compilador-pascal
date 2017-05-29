@@ -190,13 +190,13 @@ class TabelaSimbolos
             ),
             'const' => array(
                 "id" => 31,
-                "descricao" => "constante",
+                "descricao" => "const",
                 "reservado" => true,
             ),
             'num_real' => array(
-                "id" => 31,
+                "id" => 32,
                 "descricao" => "número real",
-                "reservado" => true,
+                "reservado" => false,
             ),
         );
     }
