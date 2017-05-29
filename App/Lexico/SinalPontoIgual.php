@@ -5,16 +5,14 @@ namespace App\Lexico;
 use App\Codigo\Codigo;
 
 /**
- * Classe utilizada para verificação e criação de token da categoria ponto_igual := .
- * Token: := 
- * Observação: A linguagem não permite que exista o carácter : sem a presença do carácter = 
+ * Classe utilizada para verificação e criação de token da categoria ponto_igual := e :
+ * Token: := ou :
  * 
  * @author Fernanda Pires
  * @author Peter Clayder
  */
 class SinalPontoIgual implements IToken
 {
-
     /**
      * Recebe a chave que o token pertence. 
      * Essa chave é referente ao array $simbolos da classe TabelaSimbolos 
@@ -70,22 +68,18 @@ class SinalPontoIgual implements IToken
         /*
          * Verifica se o próximo carácter é o =
          * Se for verdadeiro o token := será formado 
-         * Caso contrário será retornado carácter inválido
-         * pois a linguagem não permite o uso de : 
+         * Caso contrário será retornado :
          */
         if ($dadosProxCaracter['chAtual'] === "=")
         {
-
             $token = $chAtual . "=";
-            $dadosProxCaracter = $this->codigo->proximoCaracter($idChProximo, $chProximo);
-
-            $relatorio = $this->gerarRelatorio($token);
-
-            return array('token' => $token, 'chAtual' => $dadosProxCaracter['chAtual'], 'idChatual' => $dadosProxCaracter['idChAtual'], 'relatorio' => $relatorio);
         } else
         {
-            return array();
+            $token = $chAtual;
         }
+        $dadosProxCaracter = $this->codigo->proximoCaracter($idChProximo, $chProximo);
+        $relatorio = $this->gerarRelatorio($token);
+        return array('token' => $token, 'chAtual' => $dadosProxCaracter['chAtual'], 'idChatual' => $dadosProxCaracter['idChAtual'], 'relatorio' => $relatorio);
     }
 
 }

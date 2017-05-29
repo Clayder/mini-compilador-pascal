@@ -197,6 +197,18 @@ class TabelaSimbolos
                 "id" => 32,
                 "descricao" => "número real",
                 "reservado" => false,
+            ),'dois_pontos' => array(
+                "id" => 33,
+                "descricao" => "dois pontos",
+                "reservado" => false,
+            ),'integer' => array(
+                "id" => 34,
+                "descricao" => "integer",
+                "reservado" => true,
+            ),'real' => array(
+                "id" => 35,
+                "descricao" => "real",
+                "reservado" => true,
             ),
         );
     }

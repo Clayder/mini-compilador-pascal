@@ -12,7 +12,6 @@ use App\Lexico\TabelaSimbolos;
  */
 class AnalSintatico
 {
-
     /**
      * Array de tokens formado pelo código.
      * @var array
@@ -56,20 +55,64 @@ class AnalSintatico
     }
 
     /**
-     * PROG -> vars BLOCO .
+     * PROG -> CONSTANTES BLOCO .
      * 
      * @return void
      */
     public function prog()
     {
-        $this->vars();
+        $this->constantes();
         $this->bloco();
         $this->verificarToken(".");
         $this->verificarToken("EOF");
     }
 
+    public function constantes(){
+        if($this->tokenIgual("const")){
+            $this->nextToken();
+            $this->listaConstantes();
+        }
+    }
+
+    public function listaConstantes(){
+        $this->defConst();
+        $this->listasConstantes2();
+    }
+
+    public function listasConstantes2(){
+        if($this->verificaVariavel()) {
+            $this->listaConstantes();
+        }
+    }
+
+    public function defConst(){
+        $this->ident();
+        $this->verificarToken("=");
+        $this->num();
+        $this->verificarToken(";");
+    }
+
+    public function num(){
+        if($this->numInt()){
+        }elseif($this->numFloat()){
+        }else{
+            $this->error("número inteiro ou real");
+        }
+    }
+
+    public function numFloat(){
+        if (is_float($this->get_numeric(self::$token)))
+        {
+            $this->nextToken();
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
     /**
-     * VARS -> var LISTA_IDENT ; | E
+     * VARS -> var LISTAS_IDENT | E
      * 
      * @return void 
      */
@@ -78,8 +121,36 @@ class AnalSintatico
         if ($this->tokenIgual("var"))
         {
             $this->nextToken();
-            $this->listaIdent();
+            $this->listasIdent();
+        }
+    }
+    /*
+     * LISTAS_IDENT -> DEF_LISTAS_IDENT lISTAS_IDENT2
+     */
+    public function listasIdent(){
+        $this->defListasIdent();
+        $this->listasIdent2();
+    }
+
+    public function listasIdent2(){
+        if($this->verificaVariavel()){
+            $this->listasIdent();
+        }
+    }
+
+    public function defListasIdent(){
+        $this->listaIdent();
+        $this->verificarToken(":");
+        $this->defListasIdent2();
+    }
+
+    public function defListasIdent2(){
+        if ($this->tokenIgual("integer") || $this->tokenIgual("real"))
+        {
+            $this->nextToken();
             $this->verificarToken(";");
+        }else{
+            $this->error("integer ou real");
         }
     }
 
@@ -142,12 +213,13 @@ class AnalSintatico
     }
 
     /**
-     * BLOCO -> begin COMS end
+     * BLOCO -> VARS begin COMS end
      * 
      * @return void 
      */
     public function bloco()
     {
+        $this->vars();
         $this->verificarToken("begin");
         $this->coms();
         $this->verificarToken("end");
@@ -382,9 +454,9 @@ class AnalSintatico
     }
 
     /**
-     * NUM -> DIGITO NUM2
+     * NUM_INT -> DIGITO NUM_INT2
      * --------------------------------------------------
-     * NUM2 -> DIGITO |
+     * NUM_INT2 -> DIGITO |
      *         E
      * ---------------------------------------------------
      * 
@@ -395,9 +467,9 @@ class AnalSintatico
      * 
      * @return boolean
      */
-    public function num()
+    public function numInt()
     {
-        if (is_int(self::$token))
+        if (is_int($this->get_numeric(self::$token)))
         {
             $this->nextToken();
             return true;
@@ -471,6 +543,18 @@ class AnalSintatico
         {
             self::$token = $this->arrayTokens[self::$posToken];
         }
+    }
+
+    /**
+     * Recebe um número no formato de string e transforma ele em inteiro ou float
+     * @param numeric
+     * @return int|float | string
+     */
+    public function get_numeric($val) {
+        if (is_numeric($val)) {
+            return $val + 0;
+        }
+        return 'n';
     }
 
     /**

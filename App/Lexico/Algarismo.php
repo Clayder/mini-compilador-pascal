@@ -66,16 +66,16 @@ class Algarismo implements IToken
         do {
             //Teste\Teste::gerarToken("Algarismo", $chAtual, $token, $idChAtual);
             // forma o token
-            $token = $token . $this->chAtual;
+            $token = $token . $chAtual;
             // próximo caracter 
             $this->proximo();
             /*
              * verifico se o próximo caracter é um .
              * Se for um . temos que verificar se o próximo caracter (depois do . ) é um digito
+             * Se for verdadeiro, inserimos um . para transformar o token em número real
              */
-            $ehReal = $this->verificaNumeroReal($token);
-            if ($ehReal) {
-                $token = $token . $ehReal;
+            if(  $this->verificaNumeroReal($token)){
+                $token = $token . ".";
             }
             // atualiza os dados do caracter atual
             $chAtual = $this->chAtual;
@@ -106,9 +106,8 @@ class Algarismo implements IToken
             // verifcar se o próximo é um número
             $this->proximo();
             if (is_numeric($this->chAtual)) {
-                echo "entrei";
                 $this->tipoToken = "num_real";
-                return "." . $this->chAtual;
+                return true;
             } else {
                 $this->chAtual = $caracter;
                 $this->idChAtual = $idCaracter;
