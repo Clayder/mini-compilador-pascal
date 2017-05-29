@@ -126,15 +126,11 @@ class AnalisLexico
         switch ($this->chAtual)
         {
             case (Letra::ehLetra($this->chAtual)):
-
                 $objGerarToken = new Letra($this->codigo);
-
                 break;
 
             case (is_numeric($this->chAtual)):
-
                 $objGerarToken = new Algarismo($this->codigo);
-
                 break;
 
             case (Sinal::ehSinal($this->chAtual)):
@@ -156,9 +152,7 @@ class AnalisLexico
                 break;
 
             case ($this->chAtual === ":"):
-
                 $objGerarToken = new SinalPontoIgual($this->codigo);
-
                 break;
 
             case ($this->chAtual === "{"):

@@ -178,14 +178,24 @@ class TabelaSimbolos
                 "descricao" => "variável",
                 "reservado" => false,
             ),
-            'numero' => array(
+            'num_int' => array(
                 "id" => 29,
-                "descricao" => "Int",
+                "descricao" => "Inteiro",
                 "reservado" => false,
             ),
             'EOF' => array(
                 "id" => 30,
                 "descricao" => "EOF",
+                "reservado" => true,
+            ),
+            'const' => array(
+                "id" => 31,
+                "descricao" => "constante",
+                "reservado" => true,
+            ),
+            'num_real' => array(
+                "id" => 31,
+                "descricao" => "número real",
                 "reservado" => true,
             ),
         );
