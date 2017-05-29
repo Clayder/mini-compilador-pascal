@@ -57,9 +57,7 @@ if (isset($_POST['codigo']))
 
     // carrega o array com palavras reservadas
     TabelaSimbolos::setPalavrasReservadas();
-
     $lexico = new Lexico(new Codigo($arrayCodigo));
-
     do
     {
         // reinicializa  o atributo token

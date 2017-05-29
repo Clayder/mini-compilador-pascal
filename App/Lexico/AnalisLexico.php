@@ -199,7 +199,6 @@ class AnalisLexico
              * Atualiza os dados do chAtual
              */
             $this->setDadosChAtual($tokenGerado['idChatual'], $tokenGerado['chAtual']);
-
             $this->token = $tokenGerado['token'];
             $this->arrayTokens[] = $this->token;
             $this->arrayTokensLinha[] = array(

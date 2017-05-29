@@ -63,6 +63,7 @@ class Comentario implements IToken
             }
         } while (!$stop);
 
+        $token = $token . "}";
 
         // próximo caracter
         $dadosProxCaracter = $this->codigo->proximoCaracter($idChAtual, $chAtual);

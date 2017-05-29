@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e69785f5-38f7-4f51-912f-06d2e507835a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Lexico/Algarismo.php" afterPath="$PROJECT_DIR$/App/Lexico/Algarismo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Lexico/SinalPontoIgual.php" afterPath="$PROJECT_DIR$/App/Lexico/SinalPontoIgual.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Lexico/TabelaSimbolos.php" afterPath="$PROJECT_DIR$/App/Lexico/TabelaSimbolos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Lexico/AnalisLexico.php" afterPath="$PROJECT_DIR$/App/Lexico/AnalisLexico.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Lexico/Comentario.php" afterPath="$PROJECT_DIR$/App/Lexico/Comentario.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Sintatico/AnalSintatico.php" afterPath="$PROJECT_DIR$/App/Sintatico/AnalSintatico.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compilador.php" afterPath="$PROJECT_DIR$/compilador.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,37 +17,47 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="AnalSintatico.php" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="AnalSintatico.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Sintatico/AnalSintatico.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13356">
-              <caret line="521" column="20" lean-forward="false" selection-start-line="521" selection-start-column="20" selection-end-line="521" selection-end-column="20" />
+            <state relative-caret-position="252">
+              <caret line="54" column="42" lean-forward="true" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
               <folding>
-                <element signature="e#1094#1345#0#PHP" expanded="false" />
-                <element signature="e#2002#2153#0#PHP" expanded="false" />
-                <element signature="e#2639#2797#0#PHP" expanded="false" />
-                <element signature="e#2871#2971#0#PHP" expanded="false" />
-                <element signature="e#5436#6045#0#PHP" expanded="false" />
-                <element signature="e#6096#6268#0#PHP" expanded="false" />
-                <element signature="e#6319#6502#0#PHP" expanded="false" />
-                <element signature="e#6553#6826#0#PHP" expanded="false" />
-                <element signature="e#6877#7049#0#PHP" expanded="false" />
-                <element signature="e#7133#7237#0#PHP" expanded="false" />
-                <element signature="e#7313#7393#0#PHP" expanded="false" />
-                <element signature="e#7529#7861#0#PHP" expanded="false" />
-                <element signature="e#7940#8024#0#PHP" expanded="false" />
-                <element signature="e#8161#8483#0#PHP" expanded="false" />
-                <element signature="e#8664#8920#0#PHP" expanded="false" />
-                <element signature="e#9042#9502#0#PHP" expanded="false" />
-                <element signature="e#10275#10431#0#PHP" expanded="false" />
-                <element signature="e#11910#11990#0#PHP" expanded="false" />
-                <element signature="e#12075#12580#0#PHP" expanded="false" />
-                <marker date="1496045135677" expanded="true" signature="12160:12170" ph="..." />
-                <marker date="1496045135677" expanded="true" signature="12199:12213" ph="..." />
-                <marker date="1496045135677" expanded="true" signature="12257:12267" ph="..." />
-                <marker date="1496045135677" expanded="true" signature="12526:12536" ph="..." />
+                <element signature="e#33#63#0#PHP" expanded="true" />
+                <element signature="e#2086#2242#0#PHP" expanded="false" />
+                <element signature="e#2727#2877#0#PHP" expanded="false" />
+                <element signature="e#2952#3057#0#PHP" expanded="false" />
+                <element signature="e#5477#6038#0#PHP" expanded="false" />
+                <element signature="e#6087#6259#0#PHP" expanded="false" />
+                <element signature="e#6308#6491#0#PHP" expanded="false" />
+                <element signature="e#6540#6813#0#PHP" expanded="false" />
+                <element signature="e#6862#7034#0#PHP" expanded="false" />
+                <element signature="e#7116#7220#0#PHP" expanded="false" />
+                <element signature="e#7294#7374#0#PHP" expanded="false" />
+                <element signature="e#7507#7823#0#PHP" expanded="false" />
+                <element signature="e#7901#7985#0#PHP" expanded="false" />
+                <element signature="e#8121#8427#0#PHP" expanded="false" />
+                <element signature="e#8606#8854#0#PHP" expanded="false" />
+                <element signature="e#8975#9351#0#PHP" expanded="false" />
+                <element signature="e#10103#10251#0#PHP" expanded="false" />
+                <element signature="e#12163#12243#0#PHP" expanded="false" />
+                <element signature="e#12326#12831#0#PHP" expanded="false" />
+                <marker date="1496080612242" expanded="true" signature="12411:12421" ph="..." />
+                <marker date="1496080612242" expanded="true" signature="12450:12464" ph="..." />
+                <marker date="1496080612242" expanded="true" signature="12508:12518" ph="..." />
+                <marker date="1496080612242" expanded="true" signature="12777:12787" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="compilador.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compilador.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -55,17 +65,17 @@
       <file leaf-file-name="SinalPontoIgual.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Lexico/SinalPontoIgual.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1207">
+            <state relative-caret-position="588">
               <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Algarismo.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Algarismo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Lexico/Algarismo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-126">
+            <state relative-caret-position="42">
               <caret line="68" column="39" lean-forward="false" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
               <folding>
                 <element signature="e#30#52#0#PHP" expanded="true" />
@@ -75,30 +85,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TabelaSimbolos.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Lexico/TabelaSimbolos.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="208" column="26" lean-forward="false" selection-start-line="208" selection-start-column="26" selection-end-line="208" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AnalisLexico.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Lexico/AnalisLexico.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="132" column="40" lean-forward="true" selection-start-line="132" selection-start-column="40" selection-end-line="132" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Sinal.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Lexico/Sinal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
+            <state relative-caret-position="840">
               <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
               <folding />
             </state>
@@ -123,13 +113,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/App/Codigo/Codigo.php" />
-        <option value="$PROJECT_DIR$/App/Lexico/AnalisLexico.php" />
         <option value="$PROJECT_DIR$/App/Lexico/Letra.php" />
         <option value="$PROJECT_DIR$/App/Lexico/TabelaSimbolos.php" />
-        <option value="$PROJECT_DIR$/App/Sintatico/AnalSintatico.php" />
         <option value="$PROJECT_DIR$/App/Lexico/Sinal.php" />
         <option value="$PROJECT_DIR$/App/Lexico/SinalPontoIgual.php" />
         <option value="$PROJECT_DIR$/App/Lexico/Algarismo.php" />
+        <option value="$PROJECT_DIR$/App/Lexico/Comentario.php" />
+        <option value="$PROJECT_DIR$/App/Lexico/AnalisLexico.php" />
+        <option value="$PROJECT_DIR$/compilador.php" />
+        <option value="$PROJECT_DIR$/App/Sintatico/AnalSintatico.php" />
       </list>
     </option>
   </component>
@@ -165,8 +157,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -179,58 +169,10 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mini-compilador-pascal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mini-compilador-pascal" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="App" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Sintatico" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mini-compilador-pascal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mini-compilador-pascal" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="App" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Lexico" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mini-compilador-pascal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mini-compilador-pascal" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="App" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,6 +234,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -325,33 +273,33 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1496020272773</updated>
-      <workItem from="1496020280180" duration="21505000" />
+      <workItem from="1496020280180" duration="21788000" />
+      <workItem from="1496078489172" duration="3092000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21505000" />
+    <option name="totallyTimeSpent" value="24880000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="26" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20984848" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293919" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293919" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38006756" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5810811" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -363,11 +311,86 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/App/Sintatico/AnalSintatico.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15750">
+          <caret line="521" column="20" lean-forward="false" selection-start-line="521" selection-start-column="20" selection-end-line="521" selection-end-column="20" />
+          <folding>
+            <element signature="e#33#63#0#PHP" expanded="true" />
+            <element signature="e#2086#2242#0#PHP" expanded="false" />
+            <element signature="e#2727#2877#0#PHP" expanded="false" />
+            <element signature="e#2952#3057#0#PHP" expanded="false" />
+            <element signature="e#5477#6038#0#PHP" expanded="false" />
+            <element signature="e#6087#6259#0#PHP" expanded="false" />
+            <element signature="e#6308#6491#0#PHP" expanded="false" />
+            <element signature="e#6540#6813#0#PHP" expanded="false" />
+            <element signature="e#6862#7034#0#PHP" expanded="false" />
+            <element signature="e#7116#7220#0#PHP" expanded="false" />
+            <element signature="e#7294#7374#0#PHP" expanded="false" />
+            <element signature="e#7507#7823#0#PHP" expanded="false" />
+            <element signature="e#7901#7985#0#PHP" expanded="false" />
+            <element signature="e#8121#8427#0#PHP" expanded="false" />
+            <element signature="e#8606#8854#0#PHP" expanded="false" />
+            <element signature="e#8975#9351#0#PHP" expanded="false" />
+            <element signature="e#10103#10251#0#PHP" expanded="false" />
+            <element signature="e#12163#12243#0#PHP" expanded="false" />
+            <element signature="e#12326#12831#0#PHP" expanded="false" />
+            <marker date="1496080612242" expanded="true" signature="12411:12421" ph="..." />
+            <marker date="1496080612242" expanded="true" signature="12450:12464" ph="..." />
+            <marker date="1496080612242" expanded="true" signature="12508:12518" ph="..." />
+            <marker date="1496080612242" expanded="true" signature="12777:12787" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Lexico/SinalPontoIgual.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Lexico/TabelaSimbolos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8736">
+          <caret line="208" column="26" lean-forward="false" selection-start-line="208" selection-start-column="26" selection-end-line="208" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Lexico/AnalisLexico.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5544">
+          <caret line="132" column="40" lean-forward="true" selection-start-line="132" selection-start-column="40" selection-end-line="132" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Lexico/Sinal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Lexico/Algarismo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2814">
+          <caret line="68" column="39" lean-forward="false" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
+          <folding>
+            <element signature="e#30#52#0#PHP" expanded="true" />
+            <element signature="e#2484#2591#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App/Lexico/Relatorio.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-630">
@@ -405,10 +428,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/App/Lexico/Sinal.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Lexico/SinalPontoIgual.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App/Lexico/AnalisLexico.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="132" column="40" lean-forward="true" selection-start-line="132" selection-start-column="40" selection-end-line="132" selection-end-column="40" />
+          <caret line="200" column="87" lean-forward="false" selection-start-line="200" selection-start-column="87" selection-end-line="200" selection-end-column="87" />
           <folding />
         </state>
       </provider>
@@ -421,61 +460,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Sintatico/AnalSintatico.php">
+    <entry file="file://$PROJECT_DIR$/App/Lexico/Comentario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13356">
-          <caret line="521" column="20" lean-forward="false" selection-start-line="521" selection-start-column="20" selection-end-line="521" selection-end-column="20" />
+        <state relative-caret-position="314">
+          <caret line="37" column="60" lean-forward="false" selection-start-line="37" selection-start-column="60" selection-end-line="37" selection-end-column="60" />
           <folding>
-            <element signature="e#1094#1345#0#PHP" expanded="false" />
-            <element signature="e#2002#2153#0#PHP" expanded="false" />
-            <element signature="e#2639#2797#0#PHP" expanded="false" />
-            <element signature="e#2871#2971#0#PHP" expanded="false" />
-            <element signature="e#5436#6045#0#PHP" expanded="false" />
-            <element signature="e#6096#6268#0#PHP" expanded="false" />
-            <element signature="e#6319#6502#0#PHP" expanded="false" />
-            <element signature="e#6553#6826#0#PHP" expanded="false" />
-            <element signature="e#6877#7049#0#PHP" expanded="false" />
-            <element signature="e#7133#7237#0#PHP" expanded="false" />
-            <element signature="e#7313#7393#0#PHP" expanded="false" />
-            <element signature="e#7529#7861#0#PHP" expanded="false" />
-            <element signature="e#7940#8024#0#PHP" expanded="false" />
-            <element signature="e#8161#8483#0#PHP" expanded="false" />
-            <element signature="e#8664#8920#0#PHP" expanded="false" />
-            <element signature="e#9042#9502#0#PHP" expanded="false" />
-            <element signature="e#10275#10431#0#PHP" expanded="false" />
-            <element signature="e#11910#11990#0#PHP" expanded="false" />
-            <element signature="e#12075#12580#0#PHP" expanded="false" />
-            <marker date="1496045135677" expanded="true" signature="12160:12170" ph="..." />
-            <marker date="1496045135677" expanded="true" signature="12199:12213" ph="..." />
-            <marker date="1496045135677" expanded="true" signature="12257:12267" ph="..." />
-            <marker date="1496045135677" expanded="true" signature="12526:12536" ph="..." />
+            <element signature="e#639#2092#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Lexico/Sinal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Lexico/SinalPontoIgual.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1207">
-          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App/Lexico/Algarismo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-126">
+        <state relative-caret-position="42">
           <caret line="68" column="39" lean-forward="false" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
           <folding>
             <element signature="e#30#52#0#PHP" expanded="true" />
             <element signature="e#2484#2591#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compilador.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Sintatico/AnalSintatico.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="54" column="42" lean-forward="true" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
+          <folding>
+            <element signature="e#33#63#0#PHP" expanded="true" />
+            <element signature="e#2086#2242#0#PHP" expanded="false" />
+            <element signature="e#2727#2877#0#PHP" expanded="false" />
+            <element signature="e#2952#3057#0#PHP" expanded="false" />
+            <element signature="e#5477#6038#0#PHP" expanded="false" />
+            <element signature="e#6087#6259#0#PHP" expanded="false" />
+            <element signature="e#6308#6491#0#PHP" expanded="false" />
+            <element signature="e#6540#6813#0#PHP" expanded="false" />
+            <element signature="e#6862#7034#0#PHP" expanded="false" />
+            <element signature="e#7116#7220#0#PHP" expanded="false" />
+            <element signature="e#7294#7374#0#PHP" expanded="false" />
+            <element signature="e#7507#7823#0#PHP" expanded="false" />
+            <element signature="e#7901#7985#0#PHP" expanded="false" />
+            <element signature="e#8121#8427#0#PHP" expanded="false" />
+            <element signature="e#8606#8854#0#PHP" expanded="false" />
+            <element signature="e#8975#9351#0#PHP" expanded="false" />
+            <element signature="e#10103#10251#0#PHP" expanded="false" />
+            <element signature="e#12163#12243#0#PHP" expanded="false" />
+            <element signature="e#12326#12831#0#PHP" expanded="false" />
+            <marker date="1496080612242" expanded="true" signature="12411:12421" ph="..." />
+            <marker date="1496080612242" expanded="true" signature="12450:12464" ph="..." />
+            <marker date="1496080612242" expanded="true" signature="12508:12518" ph="..." />
+            <marker date="1496080612242" expanded="true" signature="12777:12787" ph="..." />
           </folding>
         </state>
       </provider>
