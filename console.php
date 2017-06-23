@@ -3,4 +3,8 @@
   <?php echo isset($erroLexico)? $erroLexico : ""; ?>
   <br />
   <?php echo isset($erroSintatico) ? $erroSintatico : "" ; ?>
+    <br />
+    <?php echo isset($erroSemantico) ? $erroSemantico : "" ; ?>
+
+
 </p>

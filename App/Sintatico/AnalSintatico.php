@@ -43,7 +43,6 @@ class AnalSintatico
     private static $msgError;
 
     /**
-     *
      * @param array $arrayTokens É um array de token, onde cada índice do array é um token.
      * @param array $arrayTokensLinha É um array, onde cada índice possui um array com o token e a sua respectiva linha.
      */
@@ -52,6 +51,7 @@ class AnalSintatico
         $this->arrayTokens = $arrayTokens;
         $this->arrayTokensLinha = $arrayTokensLinha;
         self::$token = $this->arrayTokens[self::$posToken];
+        // verifica se o primeiro token é um comentário
         $this->ehComentario(self::$token);
         $this->prog();
     }
@@ -69,6 +69,10 @@ class AnalSintatico
         $this->verificarToken("EOF");
     }
 
+    /**
+     * CONSTANTES -> const LISTA_CONSTANTES
+     * CONSTANTES -> E
+     */
     public function constantes()
     {
         if ($this->tokenIgual("const")) {
@@ -77,12 +81,19 @@ class AnalSintatico
         }
     }
 
+    /**
+     * LISTA_CONSTANTES -> DEF_CONST LISTA_CONSTANTES2
+     */
     public function listaConstantes()
     {
         $this->defConst();
         $this->listasConstantes2();
     }
 
+    /**
+     * LISTA_CONSTANTES2 -> LISTA_CONSTANTES
+     * LISTA_CONSTANTES2 -> E
+     */
     public function listasConstantes2()
     {
         if ($this->verificaVariavel()) {
@@ -90,6 +101,9 @@ class AnalSintatico
         }
     }
 
+    /**
+     * DEF_CONST -> IDENT = NUM;
+     */
     public function defConst()
     {
         $this->ident();
@@ -98,6 +112,10 @@ class AnalSintatico
         $this->verificarToken(";");
     }
 
+    /**
+     * NUM -> NUMINT
+     * NUM -> NUMFLOAT
+     */
     public function num()
     {
         if ($this->numInt()) {
@@ -107,6 +125,10 @@ class AnalSintatico
         }
     }
 
+    /**
+     *
+     * @return bool
+     */
     public function numFloat()
     {
         if (is_float($this->get_numeric(self::$token))) {
@@ -130,7 +152,7 @@ class AnalSintatico
         }
     }
 
-    /*
+    /**
      * LISTAS_IDENT -> DEF_LISTAS_IDENT lISTAS_IDENT2
      */
     public function listasIdent()
@@ -139,6 +161,10 @@ class AnalSintatico
         $this->listasIdent2();
     }
 
+    /**
+     * LISTAS_IDENT2 -> LISTAS_IDENT
+     * LISTAS_IDENT2 -> E
+     */
     public function listasIdent2()
     {
         if ($this->verificaVariavel()) {
@@ -146,6 +172,9 @@ class AnalSintatico
         }
     }
 
+    /**
+     * DEF_LISTAS_IDENT -> LISTA_IDENT : DEF_LISTAS_IDENT2
+     */
     public function defListasIdent()
     {
         $this->listaIdent();
@@ -153,6 +182,10 @@ class AnalSintatico
         $this->defListasIdent2();
     }
 
+    /**
+     * DEF_LISTAS_IDENT2 -> integer;
+     * DEF_LISTAS_IDENT2 -> real;
+     */
     public function defListasIdent2()
     {
         if ($this->tokenIgual("integer") || $this->tokenIgual("real")) {

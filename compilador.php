@@ -6,6 +6,7 @@ use App\Lexico\AnalisLexico as Lexico;
 use App\Lexico\TabelaSimbolos;
 use App\Codigo\Codigo;
 use App\Sintatico\AnalSintatico as sintatico;
+use App\Semantico\Semantico;
 
 $erroLexico = "";
 $erroSintatico = "";
@@ -70,6 +71,12 @@ if (isset($_POST['codigo']))
     if(!$lexico->getExisteCaracterInvalido()){
       new Sintatico($lexico->getArrayTokens(), $lexico->getArrayTokensLinha());
       $erroSintatico = Sintatico::getMsgError();
+      // Se não tiver erro sintático, inicia o semantico.
+      if($erroSintatico == ""){
+          $semantico = new Semantico($lexico->getArrayTokens(), $lexico->getArrayTokensLinha());
+          $erroSemantico = Semantico::getMsgError();
+          \App\Lexico\Teste\Teste::pre($semantico->getTabelaSimbolo());
+      }
     }
 }
 include("index.php");
