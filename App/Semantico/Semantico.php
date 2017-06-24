@@ -4,6 +4,7 @@ namespace App\Semantico;
 use App\Lexico\Sinal;
 use App\Lexico\TabelaSimbolos;
 use App\Lexico\Teste\Teste;
+use function PHPSTORM_META\type;
 
 /**
  * Class Semantico
@@ -96,7 +97,13 @@ class Semantico
                     echo "<br/>";
                     $this->retirarNivel();
                     $this->nextToken();
+                    echo "sai end: ".self::$posToken;
+                    echo "<br/>";
                     break;
+                case (";"):
+                    $this->nextToken();
+                    break;
+
                 case ("else"):
                     $this->nextToken();
                     break;
@@ -105,10 +112,56 @@ class Semantico
                     echo "ehCOM: ".self::$posToken;
                     echo "<br/>";
                     break;
+
+                case ($this->ehVariavel()):
+                    $this->verificaVariavel();
+                    break;
                 default:
+                    echo "PAREI AQUI ".self::$posToken;
                     break;
             }
         }
+    }
+
+    public function verificaVariavel(){
+        $arrayTipo = array();
+        $variavelRecebe = "";
+        // self::$token = variavel
+        if($this->ehConstante(self::$token)){
+            $this->error("Modificação da constante");
+        }
+            if(!$this->verificoVarDeclarada()){
+                $this->error("Variável não declarada");
+            }
+            $variavelRecebe = self::$token;
+            $this->nextToken(); // self::$token = :=
+            $this->nextToken(); // self::$token = variavel ou expressão
+            while(self::$token != ";"){
+                if($this->ehVariavel(self::$token)){
+                    if(!$this->verificoVarDeclarada()){
+                        $this->error("Variável não declarada");
+                    }else{
+                        $dadosVariavel = $this->getDadosVariavelTabSimbolo(self::$token);
+                        $arrayTipo[] = $dadosVariavel['tipo'];
+                    }
+                }elseif(is_numeric(self::$token)){
+                    // transformo em inteiro ou float
+                    $numero = $this->get_numeric(self::$token);
+                    if(is_float($numero) || is_double($numero)){
+                        $arrayTipo[] = "real";
+                    }else{
+                        $arrayTipo[] = "integer";
+                    }
+                }
+                $this->nextToken();
+            }
+            if($this->verificarTipoVariavel($variavelRecebe, $arrayTipo)){
+                $this->error("Erro de tipo", $variavelRecebe, true);
+            }
+            // self::token = ;
+            $this->nextToken(); // volto para start e verifico esse token
+
+
     }
 
     public function getConstantes(){
@@ -168,6 +221,7 @@ class Semantico
                 break;
         }
     }
+
     public function verificaPrint(){
         /*
          * Quando entro no método
@@ -234,7 +288,7 @@ class Semantico
             }elseif(is_numeric(self::$token)){
                 // transformo em inteiro ou float
                 $numero = $this->get_numeric(self::$token);
-                if(is_float($numero)){
+                if(is_float($numero) || is_double($numero)){
                     $arrayTipo[] = "real";
                 }else{
                     $arrayTipo[] = "integer";
@@ -242,8 +296,8 @@ class Semantico
             }
             $this->nextToken();
         }
-        if(!$this->verificarTipoVariavel($variavelFor, $arrayTipo)){
-            $this->error("Erro de tipo", $variavelFor);
+        if($this->verificarTipoVariavel($variavelFor, $arrayTipo)){
+            $this->error("Erro de tipo", $variavelFor, true);
         }
         // self::$token = to
         $this->nextToken(); // self::$token = variavel ou numero
@@ -258,6 +312,11 @@ class Semantico
         // self::$token = do
         $this->nextToken(); // volto para o metodo start e verifico esse token
     }
+
+    public function verificaRead(){
+        $this->verificaPrint();
+    }
+
     public function ehConstante($variavel){
         $dadosVariavel = $this->getDadosVariavelTabSimbolo($variavel);
         if($dadosVariavel['tipo'] === "const"){
@@ -266,18 +325,43 @@ class Semantico
             return false;
         }
     }
+
     public function verificarTipoVariavel($variavel, $arrayTipoRecebido){
         $dadosVariavel = $this->getDadosVariavelTabSimbolo($variavel);
-        if($dadosVariavel['tipo'] === "integer"){
-            if(!in_array("integer", $arrayTipoRecebido)){
-                return false;
+        $arrayTipoRecebido = $this->retirarItemArray($arrayTipoRecebido, "const");
+        $warning = false;
+        if($dadosVariavel['tipo'] != "const"){
+            if($dadosVariavel['tipo'] === "integer"){
+                if(!in_array("integer", $arrayTipoRecebido)){
+                    $warning = true;
+                }
+            }if(count($arrayTipoRecebido) > 1 && !$this->verificaTipoIguais($arrayTipoRecebido)){
+                $warning = true;
+            }
+        }
+        return $warning;
+    }
+
+    public function verificaTipoIguais($arrayTipo){
+        $tam = count($arrayTipo);
+        for($i = 0; $i < $tam - 1; $i++){
+            for ($j = $i + 1; $j < $tam; $j++){
+                if($arrayTipo[$i] !== $arrayTipo[$j]){
+                    return false;
+                }
             }
         }
         return true;
     }
 
-    public function verificaRead(){
-
+    public function retirarItemArray($array, $item){
+        $aux = array();
+        for($i = 0; $i < count($array); $i++){
+            if($array[$i] !== $item){
+                $aux[] = $array[$i];
+            }
+        }
+        return $aux;
     }
 
     public function verificoVarDeclarada(){
@@ -355,6 +439,7 @@ class Semantico
         }
         return array();
     }
+
     public function atualizarTabelaSimbolo($novaTabela){
         $this->tabelaSimbolo = $novaTabela;
     }
@@ -404,7 +489,6 @@ class Semantico
     public function addNivel(){
         $this->nivel ++;
     }
-
     public function retirarNivel(){
         $array = $this->getTabelaSimbolo();
         foreach($this->getTabelaSimbolo() as $chave => $simbolo){
@@ -441,16 +525,19 @@ class Semantico
      * @param type $tokenEsperado
      * @return void
      */
-    public function error($tipoErro, $variavel = null)
+    public function error($tipoErro, $variavel = null, $isWarning = false)
     {
-        self::$msgError .= "<span style='color: red'> Erro </span> <span style='color: #23f617'> semantico </span> na linha: <span style='color: red'>";
+        if($isWarning){
+            self::$msgError .= "<span style='color: yellow'> WARNING! </span> <span style='color: #23f617'> semantico </span> na linha: <span style='color: red'>";
+        }else{
+            self::$msgError .= "<span style='color: red'> Erro </span> <span style='color: #23f617'> semantico </span> na linha: <span style='color: red'>";
+        }
         self::$msgError .= $this->arrayTokensLinha[self::$posToken]['linha'] . "</span> | ";
         if($variavel == null){
             self::$msgError .= "Token recebido: <span class='text-primary'>" . self::$token . "</span> | ";
         }else{
             self::$msgError .= "Token recebido: <span class='text-primary'>" . $variavel . "</span> | ";
         }
-
         self::$msgError .= "Tipo erro: <span style='color: red'>" . $tipoErro . "</span><br/>";
     }
 

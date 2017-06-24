@@ -13,9 +13,7 @@ $erroSintatico = "";
 
 if (isset($_POST['codigo']))
 {
-
     $inputCodigo = $_POST['codigo'];
-
     $codigo = trim($inputCodigo);
     $codigo = $codigo . " EOF";
 
