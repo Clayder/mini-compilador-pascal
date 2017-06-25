@@ -60,7 +60,7 @@
 
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-alert btn-lg" data-toggle="modal" data-target="#tabelaLexica">
-        Tabela Lexica
+        Tabela Léxica
     </button>
     <!-- Modal tabela lexica-->
     <div class="modal fade" id="tabelaLexica" tabindex="-1" role="dialog" aria-labelledby="tabelaLexica">
@@ -69,7 +69,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">
-                        Tabela lexica
+                        Tabela léxica
                     </h4>
                 </div>
                 <div class="modal-body">
@@ -124,5 +124,28 @@
         </div>
     </div>
 
-    <?php include "resultado-semantico.php"; ?>
+    <!-- Button trigger modal -->
+    <button style="margin-top: 10px;" type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#tSimbolo">
+        Tabela de Símbolos
+    </button>
+
+    <!-- Modal array codigo-->
+    <div class="modal fade" id="tSimbolo" tabindex="-1" role="dialog" aria-labelledby="tSimbolo">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Tabela de Símbolos
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <?php include "resultado-semantico.php"; ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php endif; ?>

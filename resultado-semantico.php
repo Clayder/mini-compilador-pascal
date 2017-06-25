@@ -19,7 +19,7 @@
         <?php endforeach; ?>
         </tbody>
     </table>
-
+    Tabela Completa
     <table class="table table-hover table-bordered" style="margin-top: 40px;">
         <thead>
         <tr style="background-color: #ccc">

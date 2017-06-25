@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Semantico;
 
+use App\GeradorCodigo\GeradorCodigo as Gerador;
 use App\Lexico\Sinal;
 use App\Lexico\TabelaSimbolos;
 use App\Lexico\Teste\Teste;
-use function PHPSTORM_META\type;
 
 /**
  * Class Semantico
@@ -14,9 +15,11 @@ use function PHPSTORM_META\type;
 class Semantico
 {
     private $nivel = 0;
+    private $hidden = "";
     private $tabelaSimbolo;
     private $auxTabelaSimbolo;
     private $tamCodigo;
+    private $existeErro = false;
     /**
      * Array de tokens formado pelo código.
      * @var array
@@ -57,123 +60,122 @@ class Semantico
         $this->arrayTokens = $arrayTokens;
         $this->arrayTokensLinha = $arrayTokensLinha;
         $this->tamCodigo = count($this->arrayTokens);
-        Teste::pre($this->arrayTokens);
         self::$token = $this->arrayTokens[self::$posToken];
         // verifica se o primeiro token é um comentário
         $this->ehComentario(self::$token);
         $this->start();
     }
 
-    public function start(){
+    public function start()
+    {
         $tam = $this->tamCodigo;
-        while ($tam > 0){
+        while ($tam > 0) {
             $tam--;
-            switch (self::$token)
-            {
+            switch (self::$token) {
                 case ("const"):
-                    echo "achei constante";
-                    echo "<br/>";
                     $this->nextToken();
                     $this->getConstantes();
-                    echo "Sai da const: ".self::$posToken;
-                    echo "<br/>";
                     break;
                 case ("var"):
-                    echo "Entrei no var: ".self::$posToken;
-                    echo "<br/>";
-                    echo "achei variavel: ".self::$posToken;
-                    echo "<br/>";
                     $this->nextToken();
                     $this->getVar();
                     break;
                 case ("begin"):
-                    echo "achei begin: ".self::$posToken;
-                    echo "<br/>";
+                    Gerador::addToken("{", true);
                     $this->addNivel();
                     $this->nextToken();
                     break;
                 case ("end"):
-                    echo "entrei end: ".self::$posToken;
-                    echo "<br/>";
+                    Gerador::addToken("}", true);
                     $this->retirarNivel();
                     $this->nextToken();
-                    echo "sai end: ".self::$posToken;
-                    echo "<br/>";
                     break;
                 case (";"):
                     $this->nextToken();
                     break;
 
                 case ("else"):
+                    Gerador::addToken("else", true);
                     $this->nextToken();
                     break;
                 case ($this->ehCOM()):
                     $this->com();
-                    echo "ehCOM: ".self::$posToken;
-                    echo "<br/>";
                     break;
 
                 case ($this->ehVariavel()):
                     $this->verificaVariavel();
                     break;
                 default:
-                    echo "PAREI AQUI ".self::$posToken;
                     break;
             }
         }
     }
 
-    public function verificaVariavel(){
+    public function verificaVariavel()
+    {
         $arrayTipo = array();
         $variavelRecebe = "";
         // self::$token = variavel
-        if($this->ehConstante(self::$token)){
+        if ($this->ehConstante(self::$token)) {
             $this->error("Modificação da constante");
         }
-            if(!$this->verificoVarDeclarada()){
-                $this->error("Variável não declarada");
-            }
-            $variavelRecebe = self::$token;
-            $this->nextToken(); // self::$token = :=
-            $this->nextToken(); // self::$token = variavel ou expressão
-            while(self::$token != ";"){
-                if($this->ehVariavel(self::$token)){
-                    if(!$this->verificoVarDeclarada()){
-                        $this->error("Variável não declarada");
-                    }else{
-                        $dadosVariavel = $this->getDadosVariavelTabSimbolo(self::$token);
-                        $arrayTipo[] = $dadosVariavel['tipo'];
-                    }
-                }elseif(is_numeric(self::$token)){
-                    // transformo em inteiro ou float
-                    $numero = $this->get_numeric(self::$token);
-                    if(is_float($numero) || is_double($numero)){
-                        $arrayTipo[] = "real";
-                    }else{
-                        $arrayTipo[] = "integer";
-                    }
+        if (!$this->verificoVarDeclarada()) {
+            $this->error("Variável não declarada");
+        }
+        $variavelRecebe = self::$token;
+        Gerador::addToken("$" . $variavelRecebe, true);
+        $this->nextToken(); // self::$token = :=
+        Gerador::addToken("=");
+        $this->nextToken(); // self::$token = variavel ou expressão
+        while (self::$token != ";") {
+            if ($this->ehVariavel(self::$token)) {
+                if (!$this->verificoVarDeclarada()) {
+                    $this->error("Variável não declarada");
+                } else {
+                    $dadosVariavel = $this->getDadosVariavelTabSimbolo(self::$token);
+                    $arrayTipo[] = $dadosVariavel['tipo'];
                 }
-                $this->nextToken();
+                $this->insVarCodPhp(self::$token);
+            } elseif (is_numeric(self::$token)) {
+                // transformo em inteiro ou float
+                $numero = $this->get_numeric(self::$token);
+                if (is_float($numero) || is_double($numero)) {
+                    $arrayTipo[] = "real";
+                } else {
+                    $arrayTipo[] = "integer";
+                }
+                Gerador::addToken(self::$token);
+            } else {
+                Gerador::addToken(self::$token);
             }
-            if($this->verificarTipoVariavel($variavelRecebe, $arrayTipo)){
-                $this->error("Erro de tipo", $variavelRecebe, true);
-            }
-            // self::token = ;
-            $this->nextToken(); // volto para start e verifico esse token
+            $this->nextToken();
+        }
+        if ($this->verificarTipoVariavel($variavelRecebe, $arrayTipo)) {
+            $this->error("Erro de tipo", $variavelRecebe, true);
+        }
+        Gerador::addToken(";");
+        // self::token = ;
+        $this->nextToken(); // volto para start e verifico esse token
 
 
     }
 
-    public function getConstantes(){
-        if(self::$token !== "var" && self::$token !== "begin"){
+    public function getConstantes()
+    {
+        if (self::$token !== "var" && self::$token !== "begin") {
+            Gerador::addToken("const", true);
             $variavel = self::$token;
+            Gerador::addToken($variavel);
             $this->nextToken();
-            if(self::$token === "="){
-                $this->nextToken();
+            if (self::$token === "=") {
+                Gerador::addToken("=");
+                $this->nextToken(); // self::$token = variavel ou numeric
+                Gerador::addToken(self::$token);
             }
             $this->setSimboloTabela("const", $variavel, "const", $this->nivel);
             $this->nextToken();
-            if(self::$token === ";"){
+            if (self::$token === ";") {
+                Gerador::addToken(";");
                 $this->nextToken();
                 $this->getConstantes();
             }
@@ -185,14 +187,16 @@ class Semantico
      *
      * @return boolean
      */
-    public function ehCOM(){
+    public function ehCOM()
+    {
         $arrayCom = array("print", "if", "for", "read");
-        if(in_array(self::$token, $arrayCom)){
+        if (in_array(self::$token, $arrayCom)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
     /**
      *
      * COM -> print ( LISTA_IDENT ) |
@@ -203,8 +207,9 @@ class Semantico
      *
      * @return boolean
      */
-    public function com(){
-        switch (self::$token){
+    public function com()
+    {
+        switch (self::$token) {
             case ("print"):
                 $this->verificaPrint();
                 break;
@@ -222,20 +227,25 @@ class Semantico
         }
     }
 
-    public function verificaPrint(){
+    public function verificaPrint()
+    {
         /*
          * Quando entro no método
          * self::$token = print
          */
         $this->nextToken(); // self::$token = (
         $this->nextToken(); // self::$token = variavel
-        while (self::$token != ")"){
-            if(self::$token == ","){
+        while (self::$token != ")") {
+            if (self::$token == ",") {
                 $this->nextToken();
-            }else{
-                if(!$this->verificoVarDeclarada()){
+            } else {
+                if (!$this->verificoVarDeclarada()) {
                     $this->error("Variável não declarada");
                 }
+                Gerador::addToken("echo ", true);
+                $this->insVarCodPhp(self::$token);
+                Gerador::addToken(";");
+                Gerador::addToken("echo '<br />';", true);
                 $this->nextToken();
             }
         }
@@ -243,110 +253,179 @@ class Semantico
         $this->nextToken(); // volto para o metodo start e verifico esse token
     }
 
-    public function verificaIf(){
+    public function insVarCodPhp($variavel)
+    {
+        $dolar = '';
+        if (!$this->ehConstante($variavel)) {
+            $dolar = '$';
+        }
+        Gerador::addToken($dolar . self::$token);
+    }
+
+    public function verificaIf()
+    {
         /*
          * Quando entro no método
          * self::$token = if
          */
+        Gerador::addToken("if(", true);
         $this->nextToken(); // self::$token = variavel
-        while (self::$token !== "then"){
-            if($this->ehVariavel(self::$token)){
-                if(!$this->verificoVarDeclarada()){
+        while (self::$token !== "then") {
+            if ($this->ehVariavel(self::$token)) {
+                $this->insVarCodPhp(self::$token);
+                if (!$this->verificoVarDeclarada()) {
                     $this->error("Variável não declarada");
                 }
+            } else {
+                Gerador::addToken(self::$token);
             }
             $this->nextToken();
         }
         // self::$token = then
+        Gerador::addToken(")");
         $this->nextToken(); // volto para o metodo start e verifico esse token
     }
 
-    public function verificaFor(){
+    public function verificaFor()
+    {
         $arrayTipo = array();
         /*
          * Quando entro no método
          * self::$token = for
          */
+        Gerador::addToken("for(", true);
         $this->nextToken(); // self::$token = variavel
-        if(!$this->verificoVarDeclarada()){
+        if (!$this->verificoVarDeclarada()) {
             $this->error("Variável não declarada");
         }
         $variavelFor = self::$token;
-        if($this->ehConstante($variavelFor)){
+        Gerador::addToken("$" . $variavelFor);
+        if ($this->ehConstante($variavelFor)) {
             $this->error("A variável é uma constante");
         }
         $this->nextToken(); // self::$token = :=
+        Gerador::addToken("=");
         $this->nextToken(); // self::$token = variavel
-        while (self::$token !== "to"){
-            if($this->ehVariavel(self::$token)){
-                if(!$this->verificoVarDeclarada()){
+        while (self::$token !== "to") {
+            if ($this->ehVariavel(self::$token)) {
+                if (!$this->verificoVarDeclarada()) {
                     $this->error("Variável não declarada");
-                }else{
+                } else {
                     $dadosVariavel = $this->getDadosVariavelTabSimbolo(self::$token);
                     $arrayTipo[] = $dadosVariavel['tipo'];
                 }
-            }elseif(is_numeric(self::$token)){
+                $this->insVarCodPhp(self::$token);
+            } elseif (is_numeric(self::$token)) {
                 // transformo em inteiro ou float
                 $numero = $this->get_numeric(self::$token);
-                if(is_float($numero) || is_double($numero)){
+                if (is_float($numero) || is_double($numero)) {
                     $arrayTipo[] = "real";
-                }else{
+                } else {
                     $arrayTipo[] = "integer";
                 }
+                Gerador::addToken($numero);
+            } else {
+                Gerador::addToken(self::$token);
             }
             $this->nextToken();
         }
-        if($this->verificarTipoVariavel($variavelFor, $arrayTipo)){
+        if ($this->verificarTipoVariavel($variavelFor, $arrayTipo)) {
             $this->error("Erro de tipo", $variavelFor, true);
         }
         // self::$token = to
         $this->nextToken(); // self::$token = variavel ou numero
-        while (self::$token !== "do"){
-            if($this->ehVariavel(self::$token)){
-                if(!$this->verificoVarDeclarada()){
+        Gerador::addToken(";");
+        Gerador::addToken("$" . $variavelFor);
+        while (self::$token !== "do") {
+            if ($this->ehVariavel(self::$token)) {
+                if (!$this->verificoVarDeclarada()) {
                     $this->error("Variável não declarada");
                 }
+                Gerador::addToken("<=");
+                $this->insVarCodPhp(self::$token);
+            } else {
+                Gerador::addToken("<=");
+                Gerador::addToken(self::$token);
             }
             $this->nextToken();
         }
+        Gerador::addToken("; $" . $variavelFor . "++");
+        Gerador::addToken(")");
         // self::$token = do
         $this->nextToken(); // volto para o metodo start e verifico esse token
     }
 
-    public function verificaRead(){
-        $this->verificaPrint();
+    public function verificaRead()
+    {
+        /*
+         * Quando entro no método
+         * self::$token = read
+         */
+        $this->nextToken(); // self::$token = (
+        $this->nextToken(); // self::$token = variavel
+        while (self::$token != ")") {
+            if (self::$token == ",") {
+                $this->nextToken();
+            } else {
+                if (!$this->verificoVarDeclarada()) {
+                    $this->error("Variável não declarada");
+                }
+                if($this->ehConstante(self::$token)){
+                    $this->error("Modificação da constante");
+                }
+                $this->escreveReadCodigo(self::$token);
+                $this->nextToken();
+            }
+        }
+        $this->nextToken(); // self::$token = ;
+        $this->nextToken(); // volto para o metodo start e verifico esse token
+
     }
 
-    public function ehConstante($variavel){
+    public function escreveReadCodigo($variavel){
+        $s = "$";
+        $read = $s.$variavel." = (!isset(\$_GET['$variavel']))? exit('<form action=\"\"> Forneça o valor de $variavel : <input value=\"\" name=\"$variavel\" autofocus/> <input type=\"submit\" value=\"enter\"> $this->hidden </form>') : \$_GET['$variavel'];";
+        $this->hidden = $this->hidden . "<input type=\"hidden\" value=\"'.\$_GET['".$variavel."'].'\" name=\" $variavel\" />";
+        Gerador::addToken($read, true);
+    }
+
+    public function ehConstante($variavel)
+    {
         $dadosVariavel = $this->getDadosVariavelTabSimbolo($variavel);
-        if($dadosVariavel['tipo'] === "const"){
+        if ($dadosVariavel['tipo'] === "const") {
             return true;
-        }else{
+        } else {
             return false;
         }
+
     }
 
-    public function verificarTipoVariavel($variavel, $arrayTipoRecebido){
+    public function verificarTipoVariavel($variavel, $arrayTipoRecebido)
+    {
         $dadosVariavel = $this->getDadosVariavelTabSimbolo($variavel);
         $arrayTipoRecebido = $this->retirarItemArray($arrayTipoRecebido, "const");
         $warning = false;
-        if($dadosVariavel['tipo'] != "const"){
-            if($dadosVariavel['tipo'] === "integer"){
-                if(!in_array("integer", $arrayTipoRecebido)){
+
+        if ($dadosVariavel['tipo'] != "const") {
+            if ($dadosVariavel['tipo'] === "integer") {
+                if (!in_array("integer", $arrayTipoRecebido)) {
                     $warning = true;
                 }
-            }if(count($arrayTipoRecebido) > 1 && !$this->verificaTipoIguais($arrayTipoRecebido)){
+            }
+            if (count($arrayTipoRecebido) > 1 && !$this->verificaTipoIguais($arrayTipoRecebido)) {
                 $warning = true;
             }
         }
+
         return $warning;
     }
 
-    public function verificaTipoIguais($arrayTipo){
+    public function verificaTipoIguais($arrayTipo)
+    {
         $tam = count($arrayTipo);
-        for($i = 0; $i < $tam - 1; $i++){
-            for ($j = $i + 1; $j < $tam; $j++){
-                if($arrayTipo[$i] !== $arrayTipo[$j]){
+        for ($i = 0; $i < $tam - 1; $i++) {
+            for ($j = $i + 1; $j < $tam; $j++) {
+                if ($arrayTipo[$i] !== $arrayTipo[$j]) {
                     return false;
                 }
             }
@@ -354,35 +433,39 @@ class Semantico
         return true;
     }
 
-    public function retirarItemArray($array, $item){
+    public function retirarItemArray($array, $item)
+    {
         $aux = array();
-        for($i = 0; $i < count($array); $i++){
-            if($array[$i] !== $item){
+        for ($i = 0; $i < count($array); $i++) {
+            if ($array[$i] !== $item) {
                 $aux[] = $array[$i];
             }
         }
         return $aux;
     }
 
-    public function verificoVarDeclarada(){
-        foreach ($this->tabelaSimbolo as $simbolo){
-            if($simbolo['variavel'] === self::$token){
+    public function verificoVarDeclarada()
+    {
+        foreach ($this->tabelaSimbolo as $simbolo) {
+            if ($simbolo['variavel'] === self::$token) {
                 return true;
             }
         }
         return false;
     }
+
     /**
      *
      */
-    public function getVar(){
+    public function getVar()
+    {
         $variaveis = array();
         $tipo = "";
-        if(self::$token !== "begin"){
+        if (self::$token !== "begin") {
             $variaveis[] = self::$token;
             $this->nextToken();
-            while (self::$token != ":"){
-                if(self::$token === ","){
+            while (self::$token != ":") {
+                if (self::$token === ",") {
                     $this->nextToken();
                 }
                 $variaveis[] = self::$token;
@@ -394,7 +477,7 @@ class Semantico
              */
             $this->nextToken();
             $tipo = self::$token;
-            for($i = 0; $i < count($variaveis); $i++){
+            for ($i = 0; $i < count($variaveis); $i++) {
                 $this->setSimboloTabela("variavel", $variaveis[$i], $tipo, $this->nivel);
             }
             // self:$token = ;
@@ -410,7 +493,8 @@ class Semantico
      * @param $tipo
      * @param $nivel
      */
-    public function setSimboloTabela($idToken, $variavel, $tipo, $nivel){
+    public function setSimboloTabela($idToken, $variavel, $tipo, $nivel)
+    {
         $this->tabelaSimbolo[] = array(
             "idToken" => $idToken,
             "variavel" => $variavel,
@@ -426,9 +510,10 @@ class Semantico
         );
     }
 
-    public function getDadosVariavelTabSimbolo($variavel){
-        foreach ($this->tabelaSimbolo as $simbolo){
-            if($simbolo['variavel'] === $variavel){
+    public function getDadosVariavelTabSimbolo($variavel)
+    {
+        foreach ($this->tabelaSimbolo as $simbolo) {
+            if ($simbolo['variavel'] === $variavel) {
                 return array(
                     "idToken" => $simbolo['idToken'],
                     "variavel" => $simbolo['variavel'],
@@ -437,10 +522,11 @@ class Semantico
                 );
             }
         }
-        return array();
+        return array("idToken" => null, "variavel" => "", "tipo" => "", "nivel" => null);
     }
 
-    public function atualizarTabelaSimbolo($novaTabela){
+    public function atualizarTabelaSimbolo($novaTabela)
+    {
         $this->tabelaSimbolo = $novaTabela;
     }
 
@@ -486,40 +572,45 @@ class Semantico
         return self::$msgError;
     }
 
-    public function addNivel(){
-        $this->nivel ++;
+    public function addNivel()
+    {
+        $this->nivel++;
     }
-    public function retirarNivel(){
+
+    public function retirarNivel()
+    {
         $array = $this->getTabelaSimbolo();
-        foreach($this->getTabelaSimbolo() as $chave => $simbolo){
-            if($simbolo['nivel'] == $this->nivel - 1){
+        foreach ($this->getTabelaSimbolo() as $chave => $simbolo) {
+            if ($simbolo['nivel'] == $this->nivel - 1) {
                 unset($array[$chave]);
             }
         }
         $this->atualizarTabelaSimbolo($array);
-        $this->nivel --;
+        $this->nivel--;
     }
 
-    public function ehVariavel(){
+    public function ehVariavel()
+    {
         $arrayPalavrasReservadas = TabelaSimbolos::getPalavrasReservadas();
-        if(!is_numeric(self::$token) && !in_array(self::$token, $arrayPalavrasReservadas) && !$this->ehSinal(self::$token) ){
+        if (!is_numeric(self::$token) && !in_array(self::$token, $arrayPalavrasReservadas) && !$this->ehSinal(self::$token)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public function ehSinal($token){
-        $array = array(">","<","<>", ">=", "<=", ":=");
-        if(in_array($token, $array)){
+    public function ehSinal($token)
+    {
+        $array = array(">", "<", "<>", ">=", "<=", ":=");
+        if (in_array($token, $array)) {
             return true;
-        }elseif(Sinal::ehSinal($token)){
-           return true;
-        }else{
+        } elseif (Sinal::ehSinal($token)) {
+            return true;
+        } else {
             return false;
         }
     }
+
     /**
      *
      * @param type $tokenEsperado
@@ -527,19 +618,29 @@ class Semantico
      */
     public function error($tipoErro, $variavel = null, $isWarning = false)
     {
-        if($isWarning){
+        if ($isWarning) {
             self::$msgError .= "<span style='color: yellow'> WARNING! </span> <span style='color: #23f617'> semantico </span> na linha: <span style='color: red'>";
-        }else{
+        } else {
+            $this->existeErro = true;
             self::$msgError .= "<span style='color: red'> Erro </span> <span style='color: #23f617'> semantico </span> na linha: <span style='color: red'>";
         }
         self::$msgError .= $this->arrayTokensLinha[self::$posToken]['linha'] . "</span> | ";
-        if($variavel == null){
+        if ($variavel == null) {
             self::$msgError .= "Token recebido: <span class='text-primary'>" . self::$token . "</span> | ";
-        }else{
+        } else {
             self::$msgError .= "Token recebido: <span class='text-primary'>" . $variavel . "</span> | ";
         }
         self::$msgError .= "Tipo erro: <span style='color: red'>" . $tipoErro . "</span><br/>";
     }
+
+    /**
+     * @return bool
+     */
+    public function existeErro()
+    {
+        return $this->existeErro;
+    }
+
 
     /** MODIFIQUEI
      * Seleciona o próximo token
