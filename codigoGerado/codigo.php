@@ -1,18 +1,16 @@
  
  <?php 
- const n = 10 ; 
+ const c = 10.0 ; 
  { 
-  	 for( $i = 1 ; $i <= n ; $i++ ) 
+  	 $a = 12 ; 
+  	 if( $a > 10 ) 
   	 { 
-  	  	 $a = 1 ; 
-  	  	 for( $j = 1 ; $j <= $i ; $j++ ) 
-  	  	 { 
-  	  	  	 $a = $a * $j ; 
-  	  	  	} 
-  	  	 if( $a > 8 ) 
-  	  	 { 
-  	  	  	 echo  $a ; 
-  	  	  	 echo '<br />'; 
-  	  	  	} 
+  	  	 $h = (!isset($_GET['h']))? exit('<form action=""> Forneça o valor de h : <input value="" name="h" autofocus/> <input type="submit" value="enter">  </form>') : $_GET['h']; 
+  	  	 $j = 10 ; 
+  	  	 echo  $j ; 
+  	  	 echo '<br />'; 
   	  	} 
+  	 $a = 40 ; 
+  	 echo  $a ; 
+  	 echo '<br />'; 
   	}

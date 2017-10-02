@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e69785f5-38f7-4f51-912f-06d2e507835a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/App/GeradorCodigo/GeradorCodigo.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/codigoGerado/codigo.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/codigoGerado/exibir-codigo-gerado.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Semantico/Semantico.php" afterPath="$PROJECT_DIR$/App/Semantico/Semantico.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/compilador.php" afterPath="$PROJECT_DIR$/compilador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/console.php" afterPath="$PROJECT_DIR$/console.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resultado-semantico.php" afterPath="$PROJECT_DIR$/resultado-semantico.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resultado.php" afterPath="$PROJECT_DIR$/resultado.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp.php" afterPath="$PROJECT_DIR$/temp.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,27 +13,12 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="GeradorCodigo.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/GeradorCodigo/GeradorCodigo.php">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="programa3.pas" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testes-codigo/semantico/programa3.pas">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="59" column="35" lean-forward="false" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
-              <folding>
-                <element signature="e#292#986#0#PHP" expanded="false" />
-                <element signature="e#1029#1115#0#PHP" expanded="false" />
-                <element signature="e#2243#2341#0#PHP" expanded="false" />
-                <element signature="e#2347#2520#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="console.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/console.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+            <state relative-caret-position="840">
+              <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -51,119 +27,18 @@
       <file leaf-file-name="programa8.pas" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testes-codigo/semantico/programa8.pas">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="3" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="compilador.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/compilador.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="79" column="42" lean-forward="false" selection-start-line="79" selection-start-column="42" selection-end-line="79" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Semantico.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Semantico/Semantico.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5285">
-              <caret line="441" column="13" lean-forward="false" selection-start-line="441" selection-start-column="12" selection-end-line="441" selection-end-column="13" />
-              <folding>
-                <element signature="e#33#80#0#PHP" expanded="true" />
-                <element signature="e#3186#5043#0#PHP" expanded="false" />
-                <element signature="e#5049#5825#0#PHP" expanded="false" />
-                <element signature="e#5930#6149#0#PHP" expanded="false" />
-                <element signature="e#6883#7771#0#PHP" expanded="false" />
-                <element signature="e#7777#7981#0#PHP" expanded="false" />
-                <element signature="e#7987#8752#0#PHP" expanded="false" />
-                <element signature="e#8758#11416#0#PHP" expanded="false" />
-                <element signature="e#12805#13055#0#PHP" expanded="false" />
-                <element signature="e#13061#13742#0#PHP" expanded="false" />
-                <element signature="e#13748#14087#0#PHP" expanded="false" />
-                <element signature="e#14353#14588#0#PHP" expanded="false" />
-                <element signature="e#14617#15543#0#PHP" expanded="false" />
-                <element signature="e#15653#16103#0#PHP" expanded="false" />
-                <element signature="e#16109#16652#0#PHP" expanded="false" />
-                <element signature="e#16658#16765#0#PHP" expanded="false" />
-                <element signature="e#16658#16765#0#PHP" expanded="false" />
-                <element signature="e#16808#16891#0#PHP" expanded="false" />
-                <element signature="e#16934#17023#0#PHP" expanded="false" />
-                <element signature="e#17180#17495#0#PHP" expanded="false" />
-                <element signature="e#17546#17626#0#PHP" expanded="false" />
-                <element signature="e#18749#19705#0#PHP" expanded="false" />
-                <element signature="e#19914#20110#0#PHP" expanded="false" />
-                <marker date="1498360960626" expanded="true" signature="18897:18904" ph="..." />
-                <marker date="1498360960626" expanded="true" signature="18897:18910" ph="..." />
-                <marker date="1498360960626" expanded="true" signature="18943:18957" ph="..." />
-                <marker date="1498360960626" expanded="true" signature="19001:19011" ph="..." />
-                <marker date="1498360960626" expanded="true" signature="19116:19126" ph="..." />
-                <marker date="1498360960626" expanded="true" signature="19155:19169" ph="..." />
-                <marker date="1498360960626" expanded="true" signature="19213:19223" ph="..." />
-                <marker date="1498360960626" expanded="true" signature="19656:19666" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="codigo.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/codigoGerado/codigo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resultado.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resultado.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-221">
-              <caret line="62" column="17" lean-forward="false" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
-              <folding>
-                <element signature="n#div#1;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#button#3;n#!!top" expanded="true" />
-                <element signature="n#div#3;n#!!top" expanded="false" />
-                <marker date="1498368064329" expanded="true" signature="5012:5022" ph="..." />
-                <marker date="1498368064329" expanded="true" signature="5051:5065" ph="..." />
-                <marker date="1498368064329" expanded="true" signature="5106:5116" ph="..." />
-                <marker date="1498368064329" expanded="true" signature="5278:5288" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resultado-semantico.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resultado-semantico.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="programa3.pas" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testes-codigo/semantico/programa3.pas">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="programa.pas" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testes-codigo/semantico/programa.pas">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
-              <caret line="2" column="11" lean-forward="true" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+              <caret line="2" column="3" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TabelaSimbolos.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App/Lexico/TabelaSimbolos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9786">
+              <caret line="233" column="48" lean-forward="false" selection-start-line="233" selection-start-column="27" selection-end-line="233" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -195,8 +70,8 @@
       <find>getDadosVariavelTabSimbolo</find>
       <find>constante</find>
       <find>echo</find>
-      <find>teste</find>
       <find>}</find>
+      <find>teste</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -290,7 +165,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="testes-codigo" />
+              <option name="myItemId" value="App" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -304,11 +179,11 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="testes-codigo" />
+              <option name="myItemId" value="App" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="semantico" />
+              <option name="myItemId" value="Lexico" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -429,25 +304,27 @@
       <workItem from="1498160810741" duration="6087000" />
       <workItem from="1498218734056" duration="15693000" />
       <workItem from="1498253406850" duration="22832000" />
-      <workItem from="1498318411777" duration="36873000" />
+      <workItem from="1498318411777" duration="37247000" />
+      <workItem from="1498519394944" duration="2458000" />
+      <workItem from="1500065898787" duration="15000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121973000" />
+    <option name="totallyTimeSpent" value="124820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18560606" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19166666" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293919" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.57841486" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5767285" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -479,31 +356,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#33#63#0#PHP" expanded="false" />
-            <element signature="e#2651#2833#0#PHP" expanded="false" />
-            <element signature="e#2882#3088#0#PHP" expanded="false" />
-            <element signature="e#3589#3716#0#PHP" expanded="false" />
-            <element signature="e#6775#6947#0#PHP" expanded="false" />
-            <element signature="e#6996#7179#0#PHP" expanded="false" />
-            <element signature="e#7228#7501#0#PHP" expanded="false" />
-            <element signature="e#7550#7722#0#PHP" expanded="false" />
-            <element signature="e#7804#7908#0#PHP" expanded="false" />
-            <element signature="e#7982#8062#0#PHP" expanded="false" />
-            <element signature="e#8195#8511#0#PHP" expanded="false" />
-            <element signature="e#8589#8673#0#PHP" expanded="false" />
-            <element signature="e#8809#9115#0#PHP" expanded="false" />
-            <element signature="e#9294#9542#0#PHP" expanded="false" />
-            <element signature="e#9663#10039#0#PHP" expanded="false" />
-            <element signature="e#10487#10689#0#PHP" expanded="false" />
-            <element signature="e#10791#10939#0#PHP" expanded="false" />
-            <element signature="e#11192#11397#0#PHP" expanded="false" />
-            <element signature="e#13606#13816#0#PHP" expanded="false" />
-            <marker date="1498005052237" expanded="true" signature="13099:13109" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13138:13152" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13196:13206" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13465:13475" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -539,31 +391,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#33#63#0#PHP" expanded="false" />
-            <element signature="e#2651#2833#0#PHP" expanded="false" />
-            <element signature="e#2882#3088#0#PHP" expanded="false" />
-            <element signature="e#3589#3716#0#PHP" expanded="false" />
-            <element signature="e#6775#6947#0#PHP" expanded="false" />
-            <element signature="e#6996#7179#0#PHP" expanded="false" />
-            <element signature="e#7228#7501#0#PHP" expanded="false" />
-            <element signature="e#7550#7722#0#PHP" expanded="false" />
-            <element signature="e#7804#7908#0#PHP" expanded="false" />
-            <element signature="e#7982#8062#0#PHP" expanded="false" />
-            <element signature="e#8195#8511#0#PHP" expanded="false" />
-            <element signature="e#8589#8673#0#PHP" expanded="false" />
-            <element signature="e#8809#9115#0#PHP" expanded="false" />
-            <element signature="e#9294#9542#0#PHP" expanded="false" />
-            <element signature="e#9663#10039#0#PHP" expanded="false" />
-            <element signature="e#10487#10689#0#PHP" expanded="false" />
-            <element signature="e#10791#10939#0#PHP" expanded="false" />
-            <element signature="e#11192#11397#0#PHP" expanded="false" />
-            <element signature="e#13606#13816#0#PHP" expanded="false" />
-            <marker date="1498005052237" expanded="true" signature="13099:13109" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13138:13152" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13196:13206" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13465:13475" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -599,31 +426,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15750">
           <caret line="521" column="20" lean-forward="false" selection-start-line="521" selection-start-column="20" selection-end-line="521" selection-end-column="20" />
-          <folding>
-            <element signature="e#33#63#0#PHP" expanded="false" />
-            <element signature="e#2651#2833#0#PHP" expanded="false" />
-            <element signature="e#2882#3088#0#PHP" expanded="false" />
-            <element signature="e#3589#3716#0#PHP" expanded="false" />
-            <element signature="e#6775#6947#0#PHP" expanded="false" />
-            <element signature="e#6996#7179#0#PHP" expanded="false" />
-            <element signature="e#7228#7501#0#PHP" expanded="false" />
-            <element signature="e#7550#7722#0#PHP" expanded="false" />
-            <element signature="e#7804#7908#0#PHP" expanded="false" />
-            <element signature="e#7982#8062#0#PHP" expanded="false" />
-            <element signature="e#8195#8511#0#PHP" expanded="false" />
-            <element signature="e#8589#8673#0#PHP" expanded="false" />
-            <element signature="e#8809#9115#0#PHP" expanded="false" />
-            <element signature="e#9294#9542#0#PHP" expanded="false" />
-            <element signature="e#9663#10039#0#PHP" expanded="false" />
-            <element signature="e#10487#10689#0#PHP" expanded="false" />
-            <element signature="e#10791#10939#0#PHP" expanded="false" />
-            <element signature="e#11192#11397#0#PHP" expanded="false" />
-            <element signature="e#13606#13816#0#PHP" expanded="false" />
-            <marker date="1498005052237" expanded="true" signature="13099:13109" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13138:13152" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13196:13206" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13465:13475" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -712,42 +514,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Lexico/TabelaSimbolos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="233" column="48" lean-forward="false" selection-start-line="233" selection-start-column="27" selection-end-line="233" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Sintatico/AnalSintatico.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="451">
           <caret line="588" column="5" lean-forward="false" selection-start-line="577" selection-start-column="4" selection-end-line="588" selection-end-column="5" />
-          <folding>
-            <element signature="e#33#63#0#PHP" expanded="false" />
-            <element signature="e#2651#2833#0#PHP" expanded="false" />
-            <element signature="e#2882#3088#0#PHP" expanded="false" />
-            <element signature="e#3589#3716#0#PHP" expanded="false" />
-            <element signature="e#6775#6947#0#PHP" expanded="false" />
-            <element signature="e#6996#7179#0#PHP" expanded="false" />
-            <element signature="e#7228#7501#0#PHP" expanded="false" />
-            <element signature="e#7550#7722#0#PHP" expanded="false" />
-            <element signature="e#7804#7908#0#PHP" expanded="false" />
-            <element signature="e#7982#8062#0#PHP" expanded="false" />
-            <element signature="e#8195#8511#0#PHP" expanded="false" />
-            <element signature="e#8589#8673#0#PHP" expanded="false" />
-            <element signature="e#8809#9115#0#PHP" expanded="false" />
-            <element signature="e#9294#9542#0#PHP" expanded="false" />
-            <element signature="e#9663#10039#0#PHP" expanded="false" />
-            <element signature="e#10487#10689#0#PHP" expanded="false" />
-            <element signature="e#10791#10939#0#PHP" expanded="false" />
-            <element signature="e#11192#11397#0#PHP" expanded="false" />
-            <element signature="e#13606#13816#0#PHP" expanded="false" />
-            <marker date="1498005052237" expanded="true" signature="13099:13109" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13138:13152" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13196:13206" ph="..." />
-            <marker date="1498005052237" expanded="true" signature="13465:13475" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -787,9 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="11" column="26" lean-forward="false" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -801,19 +568,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compilador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="79" column="42" lean-forward="false" selection-start-line="79" selection-start-column="42" selection-end-line="79" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testes-codigo/semantico/programa6.pas">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="67">
           <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -821,9 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
           <caret line="33" column="34" lean-forward="true" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -831,7 +586,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="35">
           <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -839,7 +593,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -847,7 +600,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
           <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -855,7 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="13" column="17" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -863,68 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/console.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Semantico/Semantico.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5285">
-          <caret line="441" column="13" lean-forward="false" selection-start-line="441" selection-start-column="12" selection-end-line="441" selection-end-column="13" />
-          <folding>
-            <element signature="e#33#80#0#PHP" expanded="true" />
-            <element signature="e#3186#5043#0#PHP" expanded="false" />
-            <element signature="e#5049#5825#0#PHP" expanded="false" />
-            <element signature="e#5930#6149#0#PHP" expanded="false" />
-            <element signature="e#6883#7771#0#PHP" expanded="false" />
-            <element signature="e#7777#7981#0#PHP" expanded="false" />
-            <element signature="e#7987#8752#0#PHP" expanded="false" />
-            <element signature="e#8758#11416#0#PHP" expanded="false" />
-            <element signature="e#12805#13055#0#PHP" expanded="false" />
-            <element signature="e#13061#13742#0#PHP" expanded="false" />
-            <element signature="e#13748#14087#0#PHP" expanded="false" />
-            <element signature="e#14353#14588#0#PHP" expanded="false" />
-            <element signature="e#14617#15543#0#PHP" expanded="false" />
-            <element signature="e#15653#16103#0#PHP" expanded="false" />
-            <element signature="e#16109#16652#0#PHP" expanded="false" />
-            <element signature="e#16658#16765#0#PHP" expanded="false" />
-            <element signature="e#16658#16765#0#PHP" expanded="false" />
-            <element signature="e#16808#16891#0#PHP" expanded="false" />
-            <element signature="e#16934#17023#0#PHP" expanded="false" />
-            <element signature="e#17180#17495#0#PHP" expanded="false" />
-            <element signature="e#17546#17626#0#PHP" expanded="false" />
-            <element signature="e#18749#19705#0#PHP" expanded="false" />
-            <element signature="e#19914#20110#0#PHP" expanded="false" />
-            <marker date="1498360960626" expanded="true" signature="18897:18904" ph="..." />
-            <marker date="1498360960626" expanded="true" signature="18897:18910" ph="..." />
-            <marker date="1498360960626" expanded="true" signature="18943:18957" ph="..." />
-            <marker date="1498360960626" expanded="true" signature="19001:19011" ph="..." />
-            <marker date="1498360960626" expanded="true" signature="19116:19126" ph="..." />
-            <marker date="1498360960626" expanded="true" signature="19155:19169" ph="..." />
-            <marker date="1498360960626" expanded="true" signature="19213:19223" ph="..." />
-            <marker date="1498360960626" expanded="true" signature="19656:19666" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/GeradorCodigo/GeradorCodigo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="59" column="35" lean-forward="false" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
-          <folding>
-            <element signature="e#292#986#0#PHP" expanded="false" />
-            <element signature="e#1029#1115#0#PHP" expanded="false" />
-            <element signature="e#2243#2341#0#PHP" expanded="false" />
-            <element signature="e#2347#2520#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -933,10 +622,6 @@
         <state relative-caret-position="-221">
           <caret line="62" column="17" lean-forward="false" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
           <folding>
-            <element signature="n#div#1;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#button#3;n#!!top" expanded="true" />
-            <element signature="n#div#3;n#!!top" expanded="false" />
             <marker date="1498368064329" expanded="true" signature="5012:5022" ph="..." />
             <marker date="1498368064329" expanded="true" signature="5051:5065" ph="..." />
             <marker date="1498368064329" expanded="true" signature="5106:5116" ph="..." />
@@ -953,34 +638,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testes-codigo/semantico/programa3.pas">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="20" column="21" lean-forward="true" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testes-codigo/semantico/programa.pas">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="2" column="11" lean-forward="true" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codigoGerado/codigo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="9" column="20" lean-forward="false" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        <state relative-caret-position="107">
+          <caret line="8" column="11" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="17" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Semantico/Semantico.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5285">
+          <caret line="441" column="13" lean-forward="false" selection-start-line="441" selection-start-column="12" selection-end-line="441" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compilador.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="79" column="42" lean-forward="false" selection-start-line="79" selection-start-column="42" selection-end-line="79" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/console.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="6" column="14" lean-forward="false" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/GeradorCodigo/GeradorCodigo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="59" column="35" lean-forward="false" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testes-codigo/semantico/programa3.pas">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Lexico/TabelaSimbolos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9786">
+          <caret line="233" column="48" lean-forward="false" selection-start-line="233" selection-start-column="27" selection-end-line="233" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testes-codigo/semantico/programa8.pas">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="3" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="84">
+          <caret line="2" column="3" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
