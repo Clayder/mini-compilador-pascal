@@ -396,7 +396,7 @@ class AnalSintatico
             $this->termo();
             $this->exp2();
         } elseif ($this->tokenIgual("-")) {
-            $this->verificarToken("+");
+            $this->verificarToken("-");
             $this->termo();
             $this->exp2();
         }
